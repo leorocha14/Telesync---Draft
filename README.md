@@ -7,4 +7,5 @@ A DEVELOP será a branch que unirá todos nossos commits. Se estiver funcionando
 A sua branch de trabalho sempre deverá ser baseado na DEVELOP. O nome da branch pode ser o nome da view que está trabalhando, como por exemplo: tela-inicial ou cadastro-cliente
 ## Flow completo
 Criar sua branch > programar > commitar e dar push para sua branch > abrir um PR para develop
+
 O PR para MASTER será criado a partir da DEVELOP, de tempos em tempos
