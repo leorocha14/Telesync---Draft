@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Telesync
 {
-    public partial class TelaInicial : Form
+    public partial class Login : Form
     {
-        public TelaInicial()
+        public Login()
         {
             InitializeComponent();
         }

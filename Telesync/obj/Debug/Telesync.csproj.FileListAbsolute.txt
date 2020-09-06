@@ -1,0 +1,10 @@
+C:\Users\virib\Source\Repos\Telesync\Telesync\bin\Debug\Telesync.exe.config
+C:\Users\virib\Source\Repos\Telesync\Telesync\bin\Debug\Telesync.exe
+C:\Users\virib\Source\Repos\Telesync\Telesync\bin\Debug\Telesync.pdb
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.csprojAssemblyReference.cache
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.Properties.Resources.resources
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.Login.resources
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.csproj.GenerateResource.cache
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CoreCompileInputs.cache
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.exe
+C:\Users\virib\Source\Repos\Telesync\Telesync\obj\Debug\Telesync.pdb
