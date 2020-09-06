@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="validations\UserValidation.cs" />
+    <Compile Include="validations\Validation.cs" />
     <Compile Include="views\Login.cs">
       <SubType>Form</SubType>
     </Compile>

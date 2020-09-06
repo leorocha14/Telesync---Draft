@@ -32,7 +32,7 @@
             this.pwdTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.logarBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // userTextBox
@@ -68,21 +68,22 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Senha";
             // 
-            // button1
+            // logarBtn
             // 
-            this.button1.Location = new System.Drawing.Point(339, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 47);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Logar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.logarBtn.Location = new System.Drawing.Point(339, 248);
+            this.logarBtn.Name = "logarBtn";
+            this.logarBtn.Size = new System.Drawing.Size(100, 47);
+            this.logarBtn.TabIndex = 4;
+            this.logarBtn.Text = "Logar";
+            this.logarBtn.UseVisualStyleBackColor = true;
+            this.logarBtn.Click += new System.EventHandler(this.LogarBtn_Click);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.logarBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pwdTextBox);
@@ -100,7 +101,7 @@
         private System.Windows.Forms.TextBox pwdTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button logarBtn;
     }
 }
 

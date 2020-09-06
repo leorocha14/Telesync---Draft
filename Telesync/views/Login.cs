@@ -16,5 +16,10 @@ namespace Telesync
         {
             InitializeComponent();
         }
+
+        private void LogarBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
