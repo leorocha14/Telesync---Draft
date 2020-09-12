@@ -8,12 +8,6 @@ namespace Telesync
 {
     public partial class frmCadClientes : Form
     {
-
-        MySqlConnection conexao;
-        MySqlCommand comando;
-        MySqlDataAdapter da;
-        MySqlDataReader dr;
-        string strSQL;
         public frmCadClientes()
         {
             InitializeComponent();
