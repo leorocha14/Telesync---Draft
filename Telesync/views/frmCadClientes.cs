@@ -18,6 +18,7 @@ namespace Telesync
             Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtSenha.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
 
             UsuarioDao cadastrar = new UsuarioDao(usuario);
+
             MessageBox.Show(cadastrar.mensagem);
         }
 
@@ -29,11 +30,6 @@ namespace Telesync
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
