@@ -24,3 +24,15 @@ C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.exe
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.pdb
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.frmCadClientes.resources
+C:\Users\leona\source\repos\Telesync\Telesync\bin\Debug\Telesync.exe.config
+C:\Users\leona\source\repos\Telesync\Telesync\bin\Debug\Telesync.exe
+C:\Users\leona\source\repos\Telesync\Telesync\bin\Debug\Telesync.pdb
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csprojAssemblyReference.cache
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.frmCadClientes.resources
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.Properties.Resources.resources
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.TelaInicial.resources
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.GenerateResource.cache
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CoreCompileInputs.cache
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CopyComplete
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.exe
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.pdb

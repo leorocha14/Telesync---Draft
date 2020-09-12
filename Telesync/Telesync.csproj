@@ -47,13 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCadClientes.cs">
+    <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCadClientes.Designer.cs">
+    <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="models\UsuarioDao.cs" />
     <Compile Include="views\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,7 +63,7 @@
     <Compile Include="models\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmCadClientes.resx">
+    <EmbeddedResource Include="views\frmCadClientes.resx">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
