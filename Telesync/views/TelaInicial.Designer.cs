@@ -28,24 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            System.Windows.Forms.Button btnCadCliente;
+            btnCadCliente = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnCadCliente
             // 
-            this.button1.Location = new System.Drawing.Point(519, 223);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            btnCadCliente.Location = new System.Drawing.Point(13, 13);
+            btnCadCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            btnCadCliente.Name = "btnCadCliente";
+            btnCadCliente.Size = new System.Drawing.Size(128, 63);
+            btnCadCliente.TabIndex = 0;
+            btnCadCliente.Text = "Cadastrar Clientes";
+            btnCadCliente.UseVisualStyleBackColor = true;
+            btnCadCliente.Click += new System.EventHandler(this.btnCadCliente_Click);
             // 
             // TelaInicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(btnCadCliente);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TelaInicial";
             this.Text = "TelaInicial";
             this.ResumeLayout(false);
@@ -53,8 +57,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
     }
 }
 
