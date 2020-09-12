@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Telesync
 {
@@ -65,7 +58,7 @@ namespace Telesync
 
         private void btnPular_Click(object sender, EventArgs e)
         {
-
+            this.Dispose();
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)

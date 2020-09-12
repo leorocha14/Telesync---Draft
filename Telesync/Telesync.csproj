@@ -54,7 +54,6 @@
     <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\TelaInicial.cs">
     <Compile Include="validations\UserValidation.cs" />
     <Compile Include="validations\Validation.cs" />
     <Compile Include="views\Login.cs">
