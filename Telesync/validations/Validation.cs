@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Telesync.models
+namespace Telesync.validations
 {
-    class Usuario
+    interface Validation
     {
+        void validate();
     }
 }

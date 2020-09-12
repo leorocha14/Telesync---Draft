@@ -30,9 +30,16 @@ C:\Users\leona\source\repos\Telesync\Telesync\bin\Debug\Telesync.pdb
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csprojAssemblyReference.cache
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.frmCadClientes.resources
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.Properties.Resources.resources
+<<<<<<< HEAD
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.TelaInicial.resources
+=======
+>>>>>>> develop
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.GenerateResource.cache
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CoreCompileInputs.cache
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CopyComplete
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.exe
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.pdb
+<<<<<<< HEAD
+=======
+C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.Login.resources
+>>>>>>> develop

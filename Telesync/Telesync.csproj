@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="config\Conexao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
@@ -55,11 +54,13 @@
     <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\TelaInicial.cs">
+    <Compile Include="validations\UserValidation.cs" />
+    <Compile Include="validations\Validation.cs" />
+    <Compile Include="views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\TelaInicial.Designer.cs">
-      <DependentUpon>TelaInicial.cs</DependentUpon>
+    <Compile Include="views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Usuario.cs" />
     <Compile Include="Program.cs" />
@@ -76,8 +77,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\TelaInicial.resx">
-      <DependentUpon>TelaInicial.cs</DependentUpon>
+    <EmbeddedResource Include="views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

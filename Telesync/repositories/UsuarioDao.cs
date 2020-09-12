@@ -1,17 +1,25 @@
+<<<<<<< HEAD
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
 using System;
+=======
+﻿using System;
+>>>>>>> develop
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Telesync.config;
 using Telesync.models;
+=======
+>>>>>>> develop
 
 namespace Telesync.repositories
 {
     class UsuarioDao
     {
+<<<<<<< HEAD
         Conexao conexao = new Conexao();
         MySqlCommand comando = new MySqlCommand();
         public String mensagem = "";
@@ -46,5 +54,7 @@ namespace Telesync.repositories
                 this.mensagem = e.Message;
             }
         }
+=======
+>>>>>>> develop
     }
 }
