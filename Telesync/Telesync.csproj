@@ -34,6 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\ApplicationModule.cs" />
     <Compile Include="config\Conexao.cs" />
+    <Compile Include="config\NinjectConfig.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
@@ -56,7 +61,7 @@
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="validations\UserValidation.cs" />
-    <Compile Include="validations\Validation.cs" />
+    <Compile Include="validations\IValidation.cs" />
     <Compile Include="views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +86,7 @@
     <EmbeddedResource Include="views\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
