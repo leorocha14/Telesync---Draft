@@ -53,6 +53,7 @@
     <Compile Include="frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\UsuarioDao.cs" />
     <Compile Include="views\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
