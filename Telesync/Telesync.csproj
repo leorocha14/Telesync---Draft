@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\Conexao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
