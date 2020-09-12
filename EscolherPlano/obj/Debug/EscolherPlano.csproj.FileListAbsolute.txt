@@ -1,0 +1,10 @@
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\bin\Debug\EscolherPlano.exe.config
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\bin\Debug\EscolherPlano.exe
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\bin\Debug\EscolherPlano.pdb
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.csprojAssemblyReference.cache
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.Form1.resources
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.Properties.Resources.resources
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.csproj.GenerateResource.cache
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.csproj.CoreCompileInputs.cache
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.exe
+C:\Users\mauro\OneDrive - Fatec Centro Paula Souza\7º semestre\Telesync\EscolherPlano\obj\Debug\EscolherPlano.pdb
