@@ -16,5 +16,11 @@ namespace Telesync
         {
             InitializeComponent();
         }
+
+        private void btnCadCliente_Click(object sender, EventArgs e)
+        {
+            frmCadClientes frm = new frmCadClientes();
+            frm.Show();
+        }
     }
 }

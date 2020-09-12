@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Telesync.models
 {
-    class Cliente
+    class Usuario
     {
     }
 }
