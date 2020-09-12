@@ -333,10 +333,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmCadClientes";
             this.Text = "Cadastrar_Clientes";
-<<<<<<< HEAD
             this.Load += new System.EventHandler(this.frmCadClientes_Load);
-=======
->>>>>>> develop
             this.ResumeLayout(false);
             this.PerformLayout();
 

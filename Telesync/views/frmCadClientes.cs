@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,25 +10,20 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Telesync.models;
 using Telesync.repositories;
-=======
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Windows.Forms;
->>>>>>> develop
 
 namespace Telesync
 {
     public partial class frmCadClientes : Form
     {
-<<<<<<< HEAD
-=======
 
         MySqlConnection conexao;
         MySqlCommand comando;
         MySqlDataAdapter da;
         MySqlDataReader dr;
         string strSQL;
->>>>>>> develop
         public frmCadClientes()
         {
             InitializeComponent();
@@ -37,12 +31,10 @@ namespace Telesync
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtSenha.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
 
             UsuarioDao cadastrar = new UsuarioDao(usuario);
             MessageBox.Show(cadastrar.mensagem);
-=======
             try
             {
                 conexao = new MySqlConnection("Server=localhost;Database=bd_telesync;Uid=root;Pwd=;");
@@ -78,29 +70,22 @@ namespace Telesync
                 conexao = null;
                 comando = null;
             }
->>>>>>> develop
         }
 
         private void btnPular_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
 
-=======
             this.Dispose();
->>>>>>> develop
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-<<<<<<< HEAD
 
         private void frmCadClientes_Load(object sender, EventArgs e)
         {
 
         }
-=======
->>>>>>> develop
     }
 }

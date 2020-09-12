@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Telesync.config
 {
@@ -20,7 +19,7 @@ namespace Telesync.config
 
         public MySqlConnection conectar()
         {
-            if(conexao.State == ConnectionState.Closed)
+            if (conexao.State == ConnectionState.Closed)
             {
                 conexao.Open();
             }
@@ -28,7 +27,7 @@ namespace Telesync.config
         }
         public void desconectar()
         {
-            if(conexao.State == ConnectionState.Open)
+            if (conexao.State == ConnectionState.Open)
             {
                 conexao.Close();
             }
