@@ -21,10 +21,10 @@ namespace EscolherPlano
 
         private void btn_adcionar_Click(object sender, EventArgs e)
         {
-
+            
             ComboBox cmb = (ComboBox)sender;
             int selectedindex = cmb.SelectedIndex;
-
+                        
             double[] vlrUnitTel = new double[3];
             vlrUnitTel[0] = 123.10;
             vlrUnitTel[1] = 300.10;
@@ -40,8 +40,7 @@ namespace EscolherPlano
 
         private void btn_remover_Click(object sender, EventArgs e)
         {
-            lt_planos.Items.Clear();
-            
+            Limpar();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,13 +66,85 @@ namespace EscolherPlano
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            tb_qtdeChips.Text = cb_qtdeChips.SelectedItem.ToString();
+           
         }
 
         private void tb_vlrPlano_TextChanged(object sender, EventArgs e)
         {
           
             
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            cb_dddPort.Text = "";
+            tb_NumPort.Text = "";
+            rb_Novo.Checked = true;
+        }
+
+        private void rb_Novo_CheckedChanged(object sender, EventArgs e)
+        {
+            cb_dddPort.Text = "";
+            tb_NumPort.Text = "";
+        }
+
+        private void rb_Portabilidade_CheckedChanged(object sender, EventArgs e)
+        {
+            cb_dddNovo.Text = "";
+            cb_NumNovo.Text = "";
+        }
+
+        public void Limpar()
+        {
+            lt_planos.Items.Clear();
+            cb_dddNovo.Text = "";
+            cb_dddPort.Text = "";
+            cb_NumNovo.Text = "";
+            tb_NumPort.Text = "";
+            cb_planoTelefonia.Text = "";
+            cb_planoInternet.Text = "";
+            tb_vlrPlano.Text = "";
+            cb_planoTelefonia.Focus();
+            rb_Novo.Checked = true;
+        }
+
+        private void btn_ProxNum_Click(object sender, EventArgs e)
+        {
+            Limpar();
+        }
+
+        private void btn_comprar_Click(object sender, EventArgs e)
+        {
+            
+            if (tb_vlrPlano.Text == "")
+            {
+                MessageBox.Show("Um plano deve ser escolhido.");
+            }
+        }
+        
+        private void cb_dddPort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_dddNovo.Text = "";
+            cb_NumNovo.Text = "";
+            rb_Portabilidade.Checked = true;
+            
+        }
+
+        private void cb_dddNovo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_dddPort.Text = "";
+            tb_NumPort.Text = "";
+            rb_Novo.Checked = true;
+        }
+
+        private void btn_Sair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void F_EscolherPlano_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
