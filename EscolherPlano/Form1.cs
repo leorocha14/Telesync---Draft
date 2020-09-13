@@ -104,6 +104,7 @@ namespace EscolherPlano
             cb_planoTelefonia.Text = "";
             cb_planoInternet.Text = "";
             tb_vlrPlano.Text = "";
+            tb_vlrTotal.Text = "";
             cb_planoTelefonia.Focus();
             rb_Novo.Checked = true;
         }

@@ -49,11 +49,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tb_NumPort = new System.Windows.Forms.MaskedTextBox();
-            this.btn_ProxNum = new System.Windows.Forms.Button();
-            this.btn_Sair = new System.Windows.Forms.Button();
-            this.btn_Finalizar = new System.Windows.Forms.Button();
-            this.btn_VerPlanos = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_novoChip = new System.Windows.Forms.Button();
+            this.btn_sair = new System.Windows.Forms.Button();
+            this.btn_finalizar = new System.Windows.Forms.Button();
+            this.btn_verPlanos = new System.Windows.Forms.Button();
+            this.tb_vlrTotal = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -293,55 +293,55 @@
             this.tb_NumPort.Size = new System.Drawing.Size(118, 22);
             this.tb_NumPort.TabIndex = 27;
             // 
-            // btn_ProxNum
+            // btn_novoChip
             // 
-            this.btn_ProxNum.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btn_ProxNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ProxNum.ForeColor = System.Drawing.Color.White;
-            this.btn_ProxNum.Location = new System.Drawing.Point(593, 158);
-            this.btn_ProxNum.Name = "btn_ProxNum";
-            this.btn_ProxNum.Size = new System.Drawing.Size(135, 38);
-            this.btn_ProxNum.TabIndex = 27;
-            this.btn_ProxNum.Text = "Novo Chip";
-            this.btn_ProxNum.UseVisualStyleBackColor = false;
-            this.btn_ProxNum.Click += new System.EventHandler(this.btn_ProxNum_Click);
+            this.btn_novoChip.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btn_novoChip.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_novoChip.ForeColor = System.Drawing.Color.White;
+            this.btn_novoChip.Location = new System.Drawing.Point(593, 158);
+            this.btn_novoChip.Name = "btn_novoChip";
+            this.btn_novoChip.Size = new System.Drawing.Size(135, 38);
+            this.btn_novoChip.TabIndex = 27;
+            this.btn_novoChip.Text = "Novo Chip";
+            this.btn_novoChip.UseVisualStyleBackColor = false;
+            this.btn_novoChip.Click += new System.EventHandler(this.btn_ProxNum_Click);
             // 
-            // btn_Sair
+            // btn_sair
             // 
-            this.btn_Sair.Location = new System.Drawing.Point(595, 465);
-            this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(133, 23);
-            this.btn_Sair.TabIndex = 28;
-            this.btn_Sair.Text = "Sair";
-            this.btn_Sair.UseVisualStyleBackColor = true;
-            this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
+            this.btn_sair.Location = new System.Drawing.Point(595, 459);
+            this.btn_sair.Name = "btn_sair";
+            this.btn_sair.Size = new System.Drawing.Size(133, 29);
+            this.btn_sair.TabIndex = 28;
+            this.btn_sair.Text = "Sair";
+            this.btn_sair.UseVisualStyleBackColor = true;
+            this.btn_sair.Click += new System.EventHandler(this.btn_Sair_Click);
             // 
-            // btn_Finalizar
+            // btn_finalizar
             // 
-            this.btn_Finalizar.Location = new System.Drawing.Point(595, 217);
-            this.btn_Finalizar.Name = "btn_Finalizar";
-            this.btn_Finalizar.Size = new System.Drawing.Size(131, 29);
-            this.btn_Finalizar.TabIndex = 29;
-            this.btn_Finalizar.Text = "Finalizar";
-            this.btn_Finalizar.UseVisualStyleBackColor = true;
+            this.btn_finalizar.Location = new System.Drawing.Point(595, 217);
+            this.btn_finalizar.Name = "btn_finalizar";
+            this.btn_finalizar.Size = new System.Drawing.Size(131, 29);
+            this.btn_finalizar.TabIndex = 29;
+            this.btn_finalizar.Text = "Finalizar";
+            this.btn_finalizar.UseVisualStyleBackColor = true;
             // 
-            // btn_VerPlanos
+            // btn_verPlanos
             // 
-            this.btn_VerPlanos.Location = new System.Drawing.Point(593, 105);
-            this.btn_VerPlanos.Name = "btn_VerPlanos";
-            this.btn_VerPlanos.Size = new System.Drawing.Size(131, 28);
-            this.btn_VerPlanos.TabIndex = 30;
-            this.btn_VerPlanos.Text = "Ver Planos";
-            this.btn_VerPlanos.UseVisualStyleBackColor = true;
+            this.btn_verPlanos.Location = new System.Drawing.Point(593, 105);
+            this.btn_verPlanos.Name = "btn_verPlanos";
+            this.btn_verPlanos.Size = new System.Drawing.Size(131, 28);
+            this.btn_verPlanos.TabIndex = 30;
+            this.btn_verPlanos.Text = "Ver Planos";
+            this.btn_verPlanos.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // tb_vlrTotal
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(595, 353);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(135, 30);
-            this.textBox1.TabIndex = 32;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_vlrTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_vlrTotal.Location = new System.Drawing.Point(595, 353);
+            this.tb_vlrTotal.Name = "tb_vlrTotal";
+            this.tb_vlrTotal.Size = new System.Drawing.Size(135, 30);
+            this.tb_vlrTotal.TabIndex = 32;
+            this.tb_vlrTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -359,12 +359,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 509);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_vlrTotal);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_VerPlanos);
-            this.Controls.Add(this.btn_Finalizar);
-            this.Controls.Add(this.btn_Sair);
-            this.Controls.Add(this.btn_ProxNum);
+            this.Controls.Add(this.btn_verPlanos);
+            this.Controls.Add(this.btn_finalizar);
+            this.Controls.Add(this.btn_sair);
+            this.Controls.Add(this.btn_novoChip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_comprar);
             this.Controls.Add(this.label6);
@@ -410,11 +410,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MaskedTextBox tb_NumPort;
-        private System.Windows.Forms.Button btn_ProxNum;
-        private System.Windows.Forms.Button btn_Sair;
-        private System.Windows.Forms.Button btn_Finalizar;
-        private System.Windows.Forms.Button btn_VerPlanos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_novoChip;
+        private System.Windows.Forms.Button btn_sair;
+        private System.Windows.Forms.Button btn_finalizar;
+        private System.Windows.Forms.Button btn_verPlanos;
+        private System.Windows.Forms.TextBox tb_vlrTotal;
         private System.Windows.Forms.Label label1;
     }
 }
