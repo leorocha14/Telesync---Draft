@@ -18,7 +18,7 @@ namespace Telesync.repositories
 
         public UsuarioDao(Usuario usuario)
         {
-            comando.CommandText = "INSERT INTO CAD_CLIENTE (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO, SENHA) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO, @SENHA)";
+            comando.CommandText = "INSERT INTO CAD_CLIENTE (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO, SENHA, DTNASC) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO, @SENHA, @DTNASC)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
             comando.Parameters.AddWithValue("@NOME", usuario.nome);
@@ -33,6 +33,7 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
             comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
             comando.Parameters.AddWithValue("@SENHA", usuario.senha);
+            comando.Parameters.AddWithValue("@DTNASC", usuario.dtNasc);
 
             try
             {
