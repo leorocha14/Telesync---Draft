@@ -22,7 +22,8 @@ namespace Telesync.models
         public string cidade { get; }
         public string complemento { get; }
         public string senha { get; }
-        public Usuario(string cpf, string nome, string nomeMae, string sexo, string email, string bairro, string cep, string logradouro, string numero, string uf, string cidade, string complemento, string senha)
+        public string dtNasc { get; }
+        public Usuario(string cpf, string nome, string nomeMae, string sexo, string email, string bairro, string cep, string logradouro, string numero, string uf, string cidade, string complemento, string senha, string dtNasc)
         {
             this.cpf = cpf;
             this.nome = nome;
@@ -37,6 +38,7 @@ namespace Telesync.models
             this.uf = uf;
             this.complemento = complemento;
             this.senha = senha;
+            this.dtNasc = dtNasc;
         }
     }
 }

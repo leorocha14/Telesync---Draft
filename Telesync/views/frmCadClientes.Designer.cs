@@ -57,6 +57,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtdtNasc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label13
@@ -297,11 +299,29 @@
             this.label1.TabIndex = 98;
             this.label1.Text = "Nome Completo";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(265, 197);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(98, 17);
+            this.label14.TabIndex = 128;
+            this.label14.Text = "Data de Nasc.";
+            // 
+            // txtdtNasc
+            // 
+            this.txtdtNasc.Location = new System.Drawing.Point(379, 192);
+            this.txtdtNasc.Name = "txtdtNasc";
+            this.txtdtNasc.Size = new System.Drawing.Size(121, 22);
+            this.txtdtNasc.TabIndex = 127;
+            // 
             // frmCadClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(521, 301);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtdtNasc);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnPular);
@@ -369,5 +389,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtdtNasc;
     }
 }
