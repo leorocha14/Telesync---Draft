@@ -21,8 +21,8 @@ namespace Telesync
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            frmCadClientes cadastroForm = new frmCadClientes();
-            cadastroForm.Show();
+           // frmCadClientes cadastroForm = new frmCadClientes();
+            // cadastroForm.Show();
         }
     }
 }
