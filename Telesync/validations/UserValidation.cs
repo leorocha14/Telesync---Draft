@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Telesync.validations
 {
-    class UserValidation : Validation
+    public class UserValidation : IValidation
     {
         public void validate()
         {

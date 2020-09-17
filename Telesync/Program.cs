@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telesync.config;
 
 namespace Telesync
 {
@@ -14,9 +15,10 @@ namespace Telesync
         [STAThread]
         static void Main()
         {
+            NinjectConfig.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(NinjectConfig.Resolve<Login>());
         }
     }
 }
