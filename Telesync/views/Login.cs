@@ -16,7 +16,7 @@ namespace Telesync
 
         private void LogarBtn_Click(object sender, EventArgs e)
         {
-            _validation.validate();
+            _validation.validar();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

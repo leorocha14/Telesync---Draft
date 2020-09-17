@@ -8,7 +8,7 @@ namespace Telesync.validations
 {
     public class UserValidation : IValidation
     {
-        public void validate()
+        public void validar()
         {
             throw new NotImplementedException();
         }

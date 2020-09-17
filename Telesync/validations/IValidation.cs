@@ -8,6 +8,6 @@ namespace Telesync.validations
 {
     public interface IValidation
     {
-        void validate();
+        void validar();
     }
 }
