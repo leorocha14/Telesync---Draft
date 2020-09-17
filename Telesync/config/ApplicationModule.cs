@@ -12,7 +12,7 @@ namespace Telesync.config
     {
         public override void Load()
         {
-            Bind(typeof(IValidation)).To(typeof(UserValidation));
+            Bind(typeof(IValidation<>)).To(typeof(AbstractValidation<>));
         }
     }
 }
