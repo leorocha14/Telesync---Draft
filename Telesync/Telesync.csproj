@@ -62,7 +62,7 @@
     <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="validations\UserValidation.cs" />
+    <Compile Include="validations\LoginValidation.cs" />
     <Compile Include="validations\IValidation.cs" />
     <Compile Include="views\Login.cs">
       <SubType>Form</SubType>
