@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Telesync.models;
+using System.Windows.Forms;
 
 namespace Telesync.validations
 {
-    public class UserValidation : AbstractValidation<Usuario>
+    public class AbstractValidation<T> : IValidation<T>
     {
-        public void validar(Usuario usuario)
+        public void validar(T entity)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Entidade não mapeada");
         }
     }
 }

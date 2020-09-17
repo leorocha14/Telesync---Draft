@@ -54,6 +54,7 @@
     <Compile Include="config\Conexao.cs" />
     <Compile Include="config\NinjectConfig.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="validations\AbstractValidation.cs" />
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
     </Compile>
