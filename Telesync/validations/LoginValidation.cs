@@ -16,7 +16,7 @@ namespace Telesync.validations
             Debug.Assert(validacaoUsuario);
             if (validacaoUsuario)
             {
-                MessageBox.Show("Valdiado com sucesso!");
+                MessageBox.Show("Validado com sucesso!");
             }
         }
     }
