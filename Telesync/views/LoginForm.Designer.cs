@@ -1,6 +1,6 @@
 ﻿namespace Telesync
 {
-    partial class Login
+    partial class LoginForm
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -39,7 +39,7 @@
             // userTextBox
             // 
             this.userTextBox.Location = new System.Drawing.Point(254, 101);
-            this.userTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.userTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.userTextBox.Name = "userTextBox";
             this.userTextBox.Size = new System.Drawing.Size(76, 20);
             this.userTextBox.TabIndex = 0;
@@ -47,7 +47,7 @@
             // pwdTextBox
             // 
             this.pwdTextBox.Location = new System.Drawing.Point(254, 147);
-            this.pwdTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pwdTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.pwdTextBox.Name = "pwdTextBox";
             this.pwdTextBox.PasswordChar = '*';
             this.pwdTextBox.Size = new System.Drawing.Size(76, 20);
@@ -76,7 +76,7 @@
             // logarBtn
             // 
             this.logarBtn.Location = new System.Drawing.Point(254, 202);
-            this.logarBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logarBtn.Margin = new System.Windows.Forms.Padding(2);
             this.logarBtn.Name = "logarBtn";
             this.logarBtn.Size = new System.Drawing.Size(75, 38);
             this.logarBtn.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // Login
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,9 +105,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pwdTextBox);
             this.Controls.Add(this.userTextBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Login";
-            this.Text = "Login";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "LoginForm";
+            this.Text = "LoginForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

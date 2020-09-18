@@ -5,11 +5,11 @@ using Telesync.validations;
 
 namespace Telesync
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        private IValidation<Usuario> _validation;
+        private IValidation<LoginValidation> _validation;
 
-        public Login(IValidation<Usuario> validation)
+        public LoginForm(IValidation<LoginValidation> validation)
         {
             InitializeComponent();
             this._validation = validation;
@@ -17,8 +17,8 @@ namespace Telesync
 
         private void LogarBtn_Click(object sender, EventArgs e)
         {
-
-            _validation.validar();
+            Login login = new Login("eded","deded");
+            _validation.validar(login);
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

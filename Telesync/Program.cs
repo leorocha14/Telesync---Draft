@@ -18,7 +18,7 @@ namespace Telesync
             NinjectConfig.Wire(new ApplicationModule());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(NinjectConfig.Resolve<Login>());
+            Application.Run(NinjectConfig.Resolve<LoginForm>());
         }
     }
 }

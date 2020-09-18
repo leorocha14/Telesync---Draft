@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Telesync.validations
 {
-    public interface IValidation<T>
+    public abstract class AbstractValidaton
     {
-        void validar(Object entityToBeValidated);
+        public abstract void validar(Object entityToBeValidated);
     }
 }

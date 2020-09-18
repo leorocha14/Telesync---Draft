@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using Telesync.models;
 
 namespace Telesync.validations
 {
-    public class LoginValidation : AbstractValidation<Usuario>
+    public class LoginValidation : AbstractValidaton
     {
-        public void validar(Usuario usuario)
+        public override void validar(Object login)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Teste");
         }
     }
 }
