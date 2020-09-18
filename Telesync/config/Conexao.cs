@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace Telesync.config
 {
-    class Conexao
+    public class Conexao
     {
-        MySqlConnection conexao = new MySqlConnection();
+        private MySqlConnection conexao = new MySqlConnection();
 
-        public Conexao()
-        {
-            conexao.ConnectionString = ("Server=localhost;Database=bd_telesync;Uid=root;Pwd=;");
-        }
+        public Conexao() => conexao.ConnectionString = ("Server=localhost;Database=bd_telesync;Uid=root;Pwd=;");
 
         public MySqlConnection conectar()
         {

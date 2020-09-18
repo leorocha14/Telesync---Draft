@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using Telesync.models;
+using Telesync.repositories;
 
 namespace Telesync.validations
 {
@@ -9,7 +10,14 @@ namespace Telesync.validations
     {
         public override void validar(Object login)
         {
-            MessageBox.Show("Teste");
+            LoginDao loginDao = new LoginDao();
+            Debug.Assert(!login.Equals(typeof(Login)));
+            var validacaoUsuario = loginDao.validarUsuario((Login)login);
+            Debug.Assert(validacaoUsuario);
+            if (validacaoUsuario)
+            {
+                MessageBox.Show("Valdiado com sucesso!");
+            }
         }
     }
 }

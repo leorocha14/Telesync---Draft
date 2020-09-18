@@ -1,10 +1,6 @@
 ﻿using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telesync.factories;
+using Telesync.repositories;
 using Telesync.validations;
 
 namespace Telesync.config

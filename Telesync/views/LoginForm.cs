@@ -17,7 +17,7 @@ namespace Telesync
 
         private void LogarBtn_Click(object sender, EventArgs e)
         {
-            Login login = new Login("eded","deded");
+            Login login = new Login(userTextBox.Text, pwdTextBox.Text);
             _validation.validar(login);
         }
 
