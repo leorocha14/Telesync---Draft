@@ -34,7 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.logarBtn = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
-            this.btnAltSenha = new System.Windows.Forms.Button();
+            this.btnAlterarSenha = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // userTextBox
@@ -94,23 +94,23 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
-            // btnAltSenha
+            // btnAlterarSenha
             // 
-            this.btnAltSenha.Location = new System.Drawing.Point(339, 249);
-            this.btnAltSenha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAltSenha.Name = "btnAltSenha";
-            this.btnAltSenha.Size = new System.Drawing.Size(100, 47);
-            this.btnAltSenha.TabIndex = 7;
-            this.btnAltSenha.Text = "Alterar Senha";
-            this.btnAltSenha.UseVisualStyleBackColor = true;
-            this.btnAltSenha.Click += new System.EventHandler(this.btnAltSenha_Click);
+            this.btnAlterarSenha.Location = new System.Drawing.Point(339, 249);
+            this.btnAlterarSenha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAlterarSenha.Name = "btnAlterarSenha";
+            this.btnAlterarSenha.Size = new System.Drawing.Size(100, 47);
+            this.btnAlterarSenha.TabIndex = 8;
+            this.btnAlterarSenha.Text = "Alterar Senha";
+            this.btnAlterarSenha.UseVisualStyleBackColor = true;
+            this.btnAlterarSenha.Click += new System.EventHandler(this.btnAlterarSenha_Click);
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAltSenha);
+            this.Controls.Add(this.btnAlterarSenha);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.logarBtn);
             this.Controls.Add(this.label2);
@@ -133,7 +133,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button logarBtn;
         private System.Windows.Forms.Button btnCadastrar;
-        private System.Windows.Forms.Button btnAltSenha;
+        private System.Windows.Forms.Button btnAlterarSenha;
     }
 }
 

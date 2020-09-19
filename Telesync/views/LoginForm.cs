@@ -28,7 +28,7 @@ namespace Telesync
             cadastroForm.Show();
         }
 
-        private void btnAltSenha_Click(object sender, EventArgs e)
+        private void btnAlterarSenha_Click(object sender, EventArgs e)
         {
             frmAlterarSenha alterarForm = new frmAlterarSenha();
             alterarForm.Show();
