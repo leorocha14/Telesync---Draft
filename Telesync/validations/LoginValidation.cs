@@ -14,10 +14,10 @@ namespace Telesync.validations
         {
             Debug.Assert(!login.Equals(typeof(Login)));
             var validacaoUsuario = loginDao.validarUsuario((Login)login);
-            Debug.Assert(validacaoUsuario);
-            if (validacaoUsuario)
+            if (!validacaoUsuario)
             {
-                MessageBox.Show("Validado com sucesso!");
+                MessageBox.Show("Usuário inválido");
+                Application.Restart();
             }
         }
     }

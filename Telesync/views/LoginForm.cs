@@ -19,6 +19,8 @@ namespace Telesync
         {
             Login login = new Login(userTextBox.Text, pwdTextBox.Text);
             _validation.validar(login);
+            frmCadClientes cadastroForm = new frmCadClientes(login);
+            cadastroForm.Show();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

@@ -14,6 +14,7 @@ namespace Telesync.models
         public string nomeMae { get; }
         public string sexo { get; }
         public string email { get; }
+        public string dtNasc { get; }
         public string bairro { get; }
         public string cep { get; }
         public string logradouro { get; }
@@ -21,13 +22,14 @@ namespace Telesync.models
         public string uf { get; }
         public string cidade { get; }
         public string complemento { get; }
-        public Usuario(string cpf, string nome, string nomeMae, string sexo, string email, string bairro, string cep, string logradouro, string numero, string uf, string cidade, string complemento)
+        public Usuario(string cpf, string nome, string nomeMae, string sexo, string email, string dtNasc, string bairro, string cep, string logradouro, string numero, string uf, string cidade, string complemento)
         {
             this.cpf = cpf;
             this.nome = nome;
             this.nomeMae = nomeMae;
             this.sexo = sexo;
             this.email = email;
+            this.dtNasc = dtNasc;
             this.bairro = bairro;
             this.cep = cep;
             this.logradouro = logradouro;
