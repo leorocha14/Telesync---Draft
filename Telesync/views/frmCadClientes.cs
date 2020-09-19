@@ -8,6 +8,8 @@ namespace Telesync
 {
     public partial class frmCadClientes : Form
     {
+        private static UsuarioDao usuarioDao = new UsuarioDao();
+
         public frmCadClientes()
         {
             InitializeComponent();
@@ -15,11 +17,13 @@ namespace Telesync
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtSenha.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text, txtdtNasc.Text);
+            Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
 
-            UsuarioDao cadastrar = new UsuarioDao(usuario);
+            Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
 
-            MessageBox.Show(cadastrar.mensagem);
+            var resultado = usuarioDao.inserirUsuario(usuario, login);
+
+            MessageBox.Show(resultado);
         }
 
         private void btnPular_Click(object sender, EventArgs e)
@@ -30,6 +34,12 @@ namespace Telesync
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var resultado = usuarioDao.excluirUsuario(txtCPF.Text);
+            MessageBox.Show(resultado);
         }
     }
 }
