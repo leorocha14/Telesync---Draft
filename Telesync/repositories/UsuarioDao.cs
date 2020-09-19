@@ -12,13 +12,16 @@ namespace Telesync.repositories
 {
     public class UsuarioDao
     {
-        private Conexao _conexao = new Conexao();
-        MySqlCommand comando = new MySqlCommand();
-        public String mensagem = "";
+        private static Conexao _conexao = new Conexao();
+        private static MySqlCommand comando = new MySqlCommand();
+        private static readonly string OPERACAO_SUCESSO = "Operação realizada com Sucesso!";
+        private static readonly string OPERACAO_ERRO = "Erro! Operação falhou devido a: ";
 
-        public UsuarioDao(Usuario usuario)
+        public string inserirUsuario(Usuario usuario, Login login)
         {
-            comando.CommandText = "INSERT INTO CAD_CLIENTE (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO, SENHA, DTNASC) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO, @SENHA, @DTNASC)";
+            comando.Parameters.Clear();
+
+            comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
             comando.Parameters.AddWithValue("@NOME", usuario.nome);
@@ -32,19 +35,47 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@UF", usuario.uf);
             comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
             comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
-            comando.Parameters.AddWithValue("@SENHA", usuario.senha);
-            comando.Parameters.AddWithValue("@DTNASC", usuario.dtNasc);
+
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                inserirLogin(login, usuario.cpf);
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
+        }
+        private void inserirLogin(Login login, string cpf)
+        {
+            comando.CommandText = "INSERT INTO TLogin (LOGIN, SENHA, CPF_USUARIO) VALUE (@LOGIN, @SENHA, @CPF_USUARIO)";
+
+            comando.Parameters.AddWithValue("@LOGIN", login.usuarioId);
+            comando.Parameters.AddWithValue("@SENHA", login.senha);
+            comando.Parameters.AddWithValue("@CPF_USUARIO", cpf);
+
+            comando.ExecuteNonQuery();
+        }
+
+        public string excluirUsuario(string cpf)
+        {
+            comando.CommandText = "DELETE FROM TCLIENTE WHERE CPF = @CPF";
+
+            comando.Parameters.AddWithValue("@CPF", cpf);
 
             try
             {
                 comando.Connection = _conexao.conectar();
                 comando.ExecuteNonQuery();
                 _conexao.desconectar();
-                this.mensagem = "Cadastrado com Sucesso!";
+                return OPERACAO_SUCESSO;
             }
             catch (MySqlException e)
             {
-                this.mensagem = e.Message;
+                return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
     }
