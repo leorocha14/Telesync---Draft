@@ -86,7 +86,7 @@
             // btnCadastrar
             // 
             this.btnCadastrar.Location = new System.Drawing.Point(339, 353);
-            this.btnCadastrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCadastrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(100, 28);
             this.btnCadastrar.TabIndex = 5;
@@ -100,7 +100,7 @@
             this.btnAltSenha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAltSenha.Name = "btnAltSenha";
             this.btnAltSenha.Size = new System.Drawing.Size(100, 47);
-            this.btnAltSenha.TabIndex = 6;
+            this.btnAltSenha.TabIndex = 7;
             this.btnAltSenha.Text = "Alterar Senha";
             this.btnAltSenha.UseVisualStyleBackColor = true;
             this.btnAltSenha.Click += new System.EventHandler(this.btnAltSenha_Click);
