@@ -8,6 +8,8 @@ namespace Telesync
 {
     public partial class frmCadClientes : Form
     {
+        private static UsuarioDao usuarioDao = new UsuarioDao();
+
         public frmCadClientes()
         {
             InitializeComponent();
@@ -18,8 +20,6 @@ namespace Telesync
             Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
 
             Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
-            
-            UsuarioDao usuarioDao = new UsuarioDao();
 
             var resultado = usuarioDao.inserirUsuario(usuario, login);
 
@@ -34,6 +34,12 @@ namespace Telesync
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var resultado = usuarioDao.excluirUsuario(txtCPF.Text);
+            MessageBox.Show(resultado);
         }
     }
 }

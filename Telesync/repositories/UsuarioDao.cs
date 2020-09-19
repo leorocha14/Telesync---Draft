@@ -14,11 +14,13 @@ namespace Telesync.repositories
     {
         private static Conexao _conexao = new Conexao();
         private static MySqlCommand comando = new MySqlCommand();
-        private static readonly string CADASTRO_SUCESSO = "Cadastrado com Sucesso!";
-        private static readonly string CADASTRO_ERRO = "Erro! Cadastro falhou devido a: ";
+        private static readonly string OPERACAO_SUCESSO = "Operação realizada com Sucesso!";
+        private static readonly string OPERACAO_ERRO = "Erro! Operação falhou devido a: ";
 
         public string inserirUsuario(Usuario usuario, Login login)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
@@ -40,11 +42,11 @@ namespace Telesync.repositories
                 comando.ExecuteNonQuery();
                 inserirLogin(login, usuario.cpf);
                 _conexao.desconectar();
-                return CADASTRO_SUCESSO;
+                return OPERACAO_SUCESSO;
             }
             catch (MySqlException e)
             {
-                return String.Concat(CADASTRO_ERRO, e.Message);
+                return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
         private void inserirLogin(Login login, string cpf)
@@ -56,6 +58,25 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@CPF_USUARIO", cpf);
 
             comando.ExecuteNonQuery();
+        }
+
+        public string excluirUsuario(string cpf)
+        {
+            comando.CommandText = "DELETE FROM TCLIENTE WHERE CPF = @CPF";
+
+            comando.Parameters.AddWithValue("@CPF", cpf);
+
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
         }
     }
 }
