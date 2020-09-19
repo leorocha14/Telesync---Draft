@@ -15,11 +15,15 @@ namespace Telesync
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtSenha.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
+            Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, txtEmail.Text, txtBairro.Text, txtCEP.Text, txtLogradouro.Text, txtNumero.Text, txtCidade.Text, txtUF.Text, txtComplemento.Text);
 
-            UsuarioDao cadastrar = new UsuarioDao(usuario);
+            Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
+            
+            UsuarioDao usuarioDao = new UsuarioDao();
 
-            MessageBox.Show(cadastrar.mensagem);
+            var resultado = usuarioDao.inserirUsuario(usuario, login);
+
+            MessageBox.Show(resultado);
         }
 
         private void btnPular_Click(object sender, EventArgs e)

@@ -12,13 +12,14 @@ namespace Telesync.repositories
 {
     public class UsuarioDao
     {
-        private Conexao _conexao = new Conexao();
-        MySqlCommand comando = new MySqlCommand();
-        public String mensagem = "";
+        private static Conexao _conexao = new Conexao();
+        private static MySqlCommand comando = new MySqlCommand();
+        private static readonly string CADASTRO_SUCESSO = "Cadastrado com Sucesso!";
+        private static readonly string CADASTRO_ERRO = "Erro! Cadastro falhou devido a: ";
 
-        public UsuarioDao(Usuario usuario)
+        public string inserirUsuario(Usuario usuario, Login login)
         {
-            comando.CommandText = "INSERT INTO CAD_CLIENTE (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO, SENHA) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO, @SENHA)";
+            comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
             comando.Parameters.AddWithValue("@NOME", usuario.nome);
@@ -32,19 +33,29 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@UF", usuario.uf);
             comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
             comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
-            comando.Parameters.AddWithValue("@SENHA", usuario.senha);
 
             try
             {
                 comando.Connection = _conexao.conectar();
                 comando.ExecuteNonQuery();
+                inserirLogin(login, usuario.cpf);
                 _conexao.desconectar();
-                this.mensagem = "Cadastrado com Sucesso!";
+                return CADASTRO_SUCESSO;
             }
             catch (MySqlException e)
             {
-                this.mensagem = e.Message;
+                return String.Concat(CADASTRO_ERRO, e.Message);
             }
+        }
+        private void inserirLogin(Login login, string cpf)
+        {
+            comando.CommandText = "INSERT INTO TLogin (LOGIN, SENHA, CPF_USUARIO) VALUE (@LOGIN, @SENHA, @CPF_USUARIO)";
+
+            comando.Parameters.AddWithValue("@LOGIN", login.usuarioId);
+            comando.Parameters.AddWithValue("@SENHA", login.senha);
+            comando.Parameters.AddWithValue("@CPF_USUARIO", cpf);
+
+            comando.ExecuteNonQuery();
         }
     }
 }
