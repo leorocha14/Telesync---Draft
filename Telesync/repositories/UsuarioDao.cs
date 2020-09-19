@@ -19,6 +19,8 @@ namespace Telesync.repositories
 
         public string inserirUsuario(Usuario usuario, Login login)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOMEMAE, SEXO, EMAIL, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO) VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
@@ -40,7 +42,6 @@ namespace Telesync.repositories
                 comando.Connection = _conexao.conectar();
                 comando.ExecuteNonQuery();
                 inserirLogin(login, usuario.cpf);
-                comando.Parameters.Clear();
                 _conexao.desconectar();
                 return CADASTRO_SUCESSO;
             }

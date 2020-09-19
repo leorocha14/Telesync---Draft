@@ -12,11 +12,13 @@ namespace Telesync.repositories
 {
     public class LoginDao
     {
-        private Conexao _conexao = new Conexao();
-        private MySqlCommand comando = new MySqlCommand();
+        private static Conexao _conexao = new Conexao();
+        private static MySqlCommand comando = new MySqlCommand();
 
         public bool validarUsuario(Login login)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "SELECT 1 FROM tlogin WHERE login = @UsuarioId AND senha = @Senha";
             comando.Parameters.AddWithValue("@UsuarioId", login.usuarioId);
             comando.Parameters.AddWithValue("@Senha", login.senha);
