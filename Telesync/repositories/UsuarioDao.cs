@@ -33,12 +33,14 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@UF", usuario.uf);
             comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
             comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
+            
 
             try
             {
                 comando.Connection = _conexao.conectar();
                 comando.ExecuteNonQuery();
                 inserirLogin(login, usuario.cpf);
+                comando.Parameters.Clear();
                 _conexao.desconectar();
                 return CADASTRO_SUCESSO;
             }

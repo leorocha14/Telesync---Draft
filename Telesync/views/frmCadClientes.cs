@@ -8,6 +8,8 @@ namespace Telesync
 {
     public partial class frmCadClientes : Form
     {
+        private static UsuarioDao usuarioDao = new UsuarioDao();
+
         public frmCadClientes()
         {
             InitializeComponent();
@@ -19,8 +21,6 @@ namespace Telesync
 
             Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
             
-            UsuarioDao usuarioDao = new UsuarioDao();
-
             var resultado = usuarioDao.inserirUsuario(usuario, login);
 
             MessageBox.Show(resultado);
