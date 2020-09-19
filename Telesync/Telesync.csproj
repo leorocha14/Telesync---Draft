@@ -53,20 +53,26 @@
     <Compile Include="config\ApplicationModule.cs" />
     <Compile Include="config\Conexao.cs" />
     <Compile Include="config\NinjectConfig.cs" />
+    <Compile Include="factories\IValidationFactory.cs" />
+    <Compile Include="factories\ValidationFactory.cs" />
+    <Compile Include="models\Login.cs" />
+    <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="validations\AbstractValidaton.cs" />
+    <Compile Include="validations\IValidation.cs" />
+    <Compile Include="validations\GenericValidation.cs" />
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="validations\UserValidation.cs" />
-    <Compile Include="validations\IValidation.cs" />
-    <Compile Include="views\Login.cs">
+    <Compile Include="validations\LoginValidation.cs" />
+    <Compile Include="views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="views\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Usuario.cs" />
     <Compile Include="Program.cs" />
@@ -83,8 +89,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

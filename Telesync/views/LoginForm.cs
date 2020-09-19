@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
+using Telesync.models;
 using Telesync.validations;
 
 namespace Telesync
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        private IValidation _validation;
+        private IValidation<LoginValidation> _validation;
 
-        public Login(IValidation validation)
+        public LoginForm(IValidation<LoginValidation> validation)
         {
             InitializeComponent();
             this._validation = validation;
@@ -16,7 +17,8 @@ namespace Telesync
 
         private void LogarBtn_Click(object sender, EventArgs e)
         {
-            _validation.validate();
+            Login login = new Login(userTextBox.Text, pwdTextBox.Text);
+            _validation.validar(login);
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

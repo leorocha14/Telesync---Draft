@@ -83,7 +83,7 @@
             this.btnPular.Name = "btnPular";
             this.btnPular.Size = new System.Drawing.Size(93, 50);
             this.btnPular.TabIndex = 124;
-            this.btnPular.Text = "Pular para Login";
+            this.btnPular.Text = "Pular para LoginForm";
             this.btnPular.UseVisualStyleBackColor = true;
             this.btnPular.Click += new System.EventHandler(this.btnPular_Click);
             // 

@@ -10,9 +10,9 @@ using Telesync.models;
 
 namespace Telesync.repositories
 {
-    class UsuarioDao
+    public class UsuarioDao
     {
-        Conexao conexao = new Conexao();
+        private Conexao _conexao = new Conexao();
         MySqlCommand comando = new MySqlCommand();
         public String mensagem = "";
 
@@ -37,9 +37,9 @@ namespace Telesync.repositories
 
             try
             {
-                comando.Connection = conexao.conectar();
+                comando.Connection = _conexao.conectar();
                 comando.ExecuteNonQuery();
-                conexao.desconectar();
+                _conexao.desconectar();
                 this.mensagem = "Cadastrado com Sucesso!";
             }
             catch (MySqlException e)
