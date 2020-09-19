@@ -36,7 +36,7 @@ namespace Telesync
             Application.Exit();
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void btnExcluir_Click_1(object sender, EventArgs e)
         {
             var resultado = usuarioDao.excluirUsuario(txtCPF.Text);
             MessageBox.Show(resultado);

@@ -326,7 +326,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.txtSenha);
             this.panel1.Location = new System.Drawing.Point(40, 218);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(483, 123);
             this.panel1.TabIndex = 127;
@@ -355,10 +355,10 @@
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(93, 50);
-            this.btnExcluir.TabIndex = 128;
+            this.btnExcluir.TabIndex = 129;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click_1);
             // 
             // frmCadClientes
             // 
