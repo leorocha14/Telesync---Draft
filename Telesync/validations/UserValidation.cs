@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Telesync.validations
 {
-    public abstract class AbstractValidaton
+    class UserValidation : Validation
     {
-        public abstract void validar(Object entityToBeValidated);
+        public void validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
