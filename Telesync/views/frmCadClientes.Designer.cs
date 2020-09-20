@@ -57,18 +57,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.txtUsuarioId = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDtNasc = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 66);
+            this.label13.Location = new System.Drawing.Point(11, 256);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(38, 13);
@@ -77,7 +75,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(92, 59);
+            this.txtSenha.Location = new System.Drawing.Point(97, 253);
             this.txtSenha.Margin = new System.Windows.Forms.Padding(2);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
@@ -333,20 +331,9 @@
             this.label1.TabIndex = 98;
             this.label1.Text = "Nome Completo";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.txtUsuarioId);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.txtSenha);
-            this.panel1.Location = new System.Drawing.Point(30, 185);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(362, 100);
-            this.panel1.TabIndex = 127;
-            // 
             // txtUsuarioId
             // 
-            this.txtUsuarioId.Location = new System.Drawing.Point(92, 18);
+            this.txtUsuarioId.Location = new System.Drawing.Point(97, 215);
             this.txtUsuarioId.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuarioId.Name = "txtUsuarioId";
             this.txtUsuarioId.Size = new System.Drawing.Size(92, 20);
@@ -356,7 +343,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label14.Location = new System.Drawing.Point(15, 25);
+            this.label14.Location = new System.Drawing.Point(11, 218);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
@@ -386,9 +373,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 375);
+            this.Controls.Add(this.txtSenha);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtUsuarioId);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtDtNasc);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPular);
             this.Controls.Add(this.txtBairro);
             this.Controls.Add(this.label11);
@@ -419,8 +409,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmCadClientes";
             this.Text = "Cadastrar_Clientes";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,7 +445,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtUsuarioId;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDtNasc;

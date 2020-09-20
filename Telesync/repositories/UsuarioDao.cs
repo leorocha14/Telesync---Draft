@@ -9,6 +9,7 @@ using Telesync.config;
 using Telesync.models;
 using System.Windows.Forms;
 using System.Collections;
+using System.Runtime.Remoting.Messaging;
 
 namespace Telesync.repositories
 {
@@ -56,6 +57,33 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@LOGIN", login.usuarioId);
 
             return rodarSelect();
+        }
+
+        public string atualizarUsuario(Usuario usuario)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "UPDATE TCliente SET NOME = @NOME, SEXO = @SEXO, EMAIL = @EMAIL, BAIRRO = @BAIRRO, CEP = @CEP, LOGRADOURO = @LOGRADOURO, " +
+                "NUMERO = @NUMERO, UF = @UF, CIDADE = @CIDADE, COMPLEMENTO = @COMPLEMENTO WHERE CPF = @CPF";
+
+            comando.Parameters.AddWithValue("@CPF", usuario.cpf);
+            comando.Parameters.AddWithValue("@NOME", usuario.nome);
+            comando.Parameters.AddWithValue("@SEXO", usuario.sexo);
+            comando.Parameters.AddWithValue("@EMAIL", usuario.email);
+            comando.Parameters.AddWithValue("@BAIRRO", usuario.bairro);
+            comando.Parameters.AddWithValue("@CEP", usuario.cep);
+            comando.Parameters.AddWithValue("@LOGRADOURO", usuario.logradouro);
+            comando.Parameters.AddWithValue("@NUMERO", usuario.numero);
+            comando.Parameters.AddWithValue("@UF", usuario.uf);
+            comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
+            comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
+
+            return rodarUpdate();
+        }
+
+        private string rodarUpdate()
+        {
+            return rodarInsert() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
         }
 
         private bool inserirLogin(Login login, string cpf)

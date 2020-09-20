@@ -10,6 +10,7 @@ namespace Telesync
     public partial class frmCadClientes : Form
     {
         private static UsuarioDao usuarioDao = new UsuarioDao();
+        private bool ehAlteracao = false;
 
         public frmCadClientes()
         {
@@ -24,6 +25,7 @@ namespace Telesync
 
         private void preencherFormulario(Login login)
         {
+            ehAlteracao = true;
             try
             {
                 var usuario = usuarioDao.encontrarUsuario(login);
@@ -59,15 +61,36 @@ namespace Telesync
 
         private void btn_cadastrar_Click(object sender, EventArgs e)
         {
+            string resultado;
             Usuario usuario = new Usuario(txtCPF.Text, txtNome.Text, txtNomemae.Text, txtSexo.Text, 
                 txtEmail.Text, txtDtNasc.Text, txtBairro.Text, txtCEP.Text, txtLogradouro.Text, 
                 txtNumero.Text, txtUF.Text, txtCidade.Text, txtComplemento.Text);
 
             Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
-            
-            var resultado = usuarioDao.inserirUsuario(usuario, login);
+
+            if (ehAlteracao)
+            {
+                resultado = usuarioDao.atualizarUsuario(usuario);
+                this.Dispose();
+            } 
+            else
+            {
+                resultado = usuarioDao.inserirUsuario(usuario, login);
+                limparForm();
+            }
 
             MessageBox.Show(resultado);
+        }
+
+        private void limparForm()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType().Equals(typeof(TextBox)))
+                {
+                    control.Text = String.Empty;
+                }
+            }
         }
 
         private void btnPular_Click(object sender, EventArgs e)
