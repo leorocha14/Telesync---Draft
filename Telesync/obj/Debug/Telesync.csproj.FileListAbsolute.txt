@@ -17,6 +17,7 @@ C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\bin\Debug\MySql.Da
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.exe.config
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.Properties.Resources.resources
+C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.TelaInicial.resources
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.csproj.GenerateResource.cache
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.csproj.CopyComplete
@@ -35,4 +36,3 @@ C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.csproj.CopyComp
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.exe
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.pdb
 C:\Users\leona\source\repos\Telesync\Telesync\obj\Debug\Telesync.Login.resources
-C:\Users\PC\Desktop\Cursos\FATEC\TG\Projeto\Telesync\Telesync\obj\Debug\Telesync.Login.resources

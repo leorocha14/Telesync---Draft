@@ -34,9 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.21.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,42 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="config\ApplicationModule.cs" />
-    <Compile Include="config\Conexao.cs" />
-    <Compile Include="config\NinjectConfig.cs" />
-    <Compile Include="factories\IValidationFactory.cs" />
-    <Compile Include="factories\ValidationFactory.cs" />
-    <Compile Include="models\Login.cs" />
-    <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
-    <Compile Include="validations\AbstractValidaton.cs" />
-    <Compile Include="validations\IValidation.cs" />
-    <Compile Include="validations\GenericValidation.cs" />
-    <Compile Include="views\frmAlterarSenha.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\frmAlterarSenha.Designer.cs">
-      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
-    </Compile>
     <Compile Include="views\frmCadClientes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\frmCadClientes.Designer.cs">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="validations\LoginValidation.cs" />
-    <Compile Include="views\LoginForm.cs">
+    <Compile Include="validations\UserValidation.cs" />
+    <Compile Include="validations\Validation.cs" />
+    <Compile Include="views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="views\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="models\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="views\frmAlterarSenha.resx">
-      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="views\frmCadClientes.resx">
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,10 +77,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="views\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
