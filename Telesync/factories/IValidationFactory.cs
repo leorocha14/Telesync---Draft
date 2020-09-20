@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telesync.validations;
 
-namespace Telesync.validations
+namespace Telesync.factories
 {
-    interface Validation
+    public interface IValidationFactory<T>
     {
-        void validate();
+        AbstractValidaton build();
     }
 }
