@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Telesync.models;
 using Telesync.validations;
+using Telesync.views;
 
 namespace Telesync
 {
@@ -25,6 +26,12 @@ namespace Telesync
         {
             frmCadClientes cadastroForm = new frmCadClientes();
             cadastroForm.Show();
+        }
+
+        private void btnCadPlanos_Click(object sender, EventArgs e)
+        {
+            frmCadastroPlano cadPlanoForm = new frmCadastroPlano();
+            cadPlanoForm.Show();
         }
     }
 }

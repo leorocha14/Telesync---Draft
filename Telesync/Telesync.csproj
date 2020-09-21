@@ -68,6 +68,12 @@
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="validations\LoginValidation.cs" />
+    <Compile Include="views\frmCadPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\frmCadPedido.Designer.cs">
+      <DependentUpon>frmCadPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

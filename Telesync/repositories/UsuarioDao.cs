@@ -78,5 +78,28 @@ namespace Telesync.repositories
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
+
+        public string inserirPlano(Pedido pedido)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "INSERT INTO TPEDIDO (NOMEPLANO, DDD, NUMERO, CPFCLIENTE) VALUE (@NOMEPLANO, @DDD, @NUMERO, @CPFCLIENTE)";
+
+            comando.Parameters.AddWithValue("@NOMEPLANO", pedido.nomePlano);
+            comando.Parameters.AddWithValue("@DDD", pedido.ddd);
+            comando.Parameters.AddWithValue("@NUMERO", pedido.numero);
+            comando.Parameters.AddWithValue("@CPFCLIENTE", pedido.cpfCliente);
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
+        }
     }
 }
