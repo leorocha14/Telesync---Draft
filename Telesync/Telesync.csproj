@@ -56,8 +56,10 @@
     <Compile Include="factories\IValidationFactory.cs" />
     <Compile Include="factories\ValidationFactory.cs" />
     <Compile Include="models\Login.cs" />
-    <Compile Include="models\Pedido.cs" />
-    <Compile Include="models\PedidoCliente.cs" />
+    <Compile Include="models\Venda.cs" />
+    <Compile Include="models\VendaCliente.cs" />
+    <Compile Include="models\Plano.cs" />
+    <Compile Include="models\VendaPlano.cs" />
     <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
     <Compile Include="validations\AbstractValidaton.cs" />

@@ -105,7 +105,7 @@ namespace Telesync.repositories
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
-        public string inserirPedido(Pedido pedido)
+        public string inserirPedido(Venda pedido)
         {
             comando.Parameters.Clear();
 
@@ -125,7 +125,7 @@ namespace Telesync.repositories
             }
 
         }
-        public string inserirPlanoCliente(PedidoCliente pedidoCliente)
+        public string inserirPlanoCliente(VendaCliente pedidoCliente)
         {
             comando.Parameters.Clear();
 
@@ -149,7 +149,7 @@ namespace Telesync.repositories
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
-        public bool verificarPlanoCliente(PedidoCliente pedidoCliente)
+        public bool verificarPlanoCliente(VendaCliente pedidoCliente)
         {
             bool verifica;
             var cpf = "";

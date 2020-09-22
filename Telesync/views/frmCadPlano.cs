@@ -50,7 +50,7 @@ namespace Telesync.views
             txtNumero.Text = gerarNumero(99000000, 99999999);
             txtNumPedCli.Text = gerarNumero(10001, 20001);
 
-            PedidoCliente pedidoCliente = new PedidoCliente(txtNumPedCli.Text, txtCPF.Text, txtNumPedido.Text, cbPlano.Text, txtDDD.Text, txtNumero.Text);
+            VendaCliente pedidoCliente = new VendaCliente(txtNumPedCli.Text, txtCPF.Text, txtNumPedido.Text, cbPlano.Text, txtDDD.Text, txtNumero.Text);
 
             var resultado = usuarioDao.inserirPlanoCliente(pedidoCliente);
 
@@ -72,7 +72,7 @@ namespace Telesync.views
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            Pedido pedido = new Pedido(txtNumPedido.Text);
+            Venda pedido = new Venda(txtNumPedido.Text);
 
             var resultado = usuarioDao.inserirPedido(pedido);
 
