@@ -8,15 +8,16 @@ namespace Telesync.validations
 {
     public class LoginValidation : AbstractValidaton
     {
+        private static LoginDao loginDao = new LoginDao();
+
         public override void validar(Object login)
         {
-            LoginDao loginDao = new LoginDao();
             Debug.Assert(!login.Equals(typeof(Login)));
             var validacaoUsuario = loginDao.validarUsuario((Login)login);
-            Debug.Assert(validacaoUsuario);
-            if (validacaoUsuario)
+            if (!validacaoUsuario)
             {
-                MessageBox.Show("Validado com sucesso!");
+                MessageBox.Show("Usuário inválido");
+                Application.Restart();
             }
         }
     }

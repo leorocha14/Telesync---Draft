@@ -58,6 +58,11 @@
     <Compile Include="models\Login.cs" />
     <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="resources\script\tables.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>tables.sql</DependentUpon>
+    </Compile>
     <Compile Include="validations\AbstractValidaton.cs" />
     <Compile Include="validations\IValidation.cs" />
     <Compile Include="validations\GenericValidation.cs" />
@@ -115,6 +120,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="resources\script\tables.sql">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>tables.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
