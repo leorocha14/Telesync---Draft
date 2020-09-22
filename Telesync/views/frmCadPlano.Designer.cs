@@ -180,7 +180,7 @@
             this.dgvPlanos.Name = "dgvPlanos";
             this.dgvPlanos.RowHeadersWidth = 51;
             this.dgvPlanos.RowTemplate.Height = 24;
-            this.dgvPlanos.Size = new System.Drawing.Size(600, 150);
+            this.dgvPlanos.Size = new System.Drawing.Size(645, 150);
             this.dgvPlanos.TabIndex = 13;
             this.dgvPlanos.Tag = "";
             this.dgvPlanos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanos_CellContentClick);

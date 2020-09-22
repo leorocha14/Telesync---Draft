@@ -33,5 +33,11 @@ namespace Telesync
             frmAlterarSenha alterarForm = new frmAlterarSenha();
             alterarForm.Show();
         }
+
+        private void btnInserirPedido_Click(object sender, EventArgs e)
+        {
+            frmCadPlano cadPlanoForm = new frmCadPlano();
+            cadPlanoForm.Show();
+        }
     }
 }

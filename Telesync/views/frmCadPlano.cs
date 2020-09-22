@@ -37,13 +37,15 @@ namespace Telesync.views
             txtCodVenda.Text = gerarNumero(0, 10000);
 
 
-            dgvPlanos.Columns.Add("NumPedido", "NumPedido");
+            dgvPlanos.Columns.Add("CodVenda", "CodVenda");
 
             dgvPlanos.Columns.Add("Numero", "Numero");
 
             dgvPlanos.Columns.Add("DDD", "DDD");
 
             dgvPlanos.Columns.Add("CPF", "CPF");
+
+            dgvPlanos.Columns.Add("NumChip", "NumChip");
 
             dgvPlanos.Rows.Add(Top);
 
@@ -57,6 +59,9 @@ namespace Telesync.views
             txtNumero.Text = gerarNumero(99000000, 99999999);
             txtCodVendaCli.Text = gerarNumero(10001, 20000);
             txtCodVendaPlano.Text = gerarNumero(20001, 30000);
+            txtNumChip.Text = gerarNumero(100000000, 1000000000);
+
+            qtddePlan += 1;
 
             VendaCliente vendaCliente = new VendaCliente(txtCodVendaCli.Text, txtCodVenda.Text, txtCPF.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
@@ -73,12 +78,10 @@ namespace Telesync.views
             dgvPlanos.Rows[contL].Cells[contC+1].Value = txtNumero.Text;
             dgvPlanos.Rows[contL].Cells[contC+2].Value = txtDDD.Text;
             dgvPlanos.Rows[contL].Cells[contC+3].Value = txtCPF.Text;
+            dgvPlanos.Rows[contL].Cells[contC+4].Value = txtNumChip.Text;
             contL += 1;
 
-            txtNumChip.Text = gerarNumero(100000000, 1000000000);
-
             txtQttdPlanos.Text = qtddePlan.ToString();
-            qtddePlan += 1;
 
             Plano plano = new Plano(txtCodPlano.Text);
 
