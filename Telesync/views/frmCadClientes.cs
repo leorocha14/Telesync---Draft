@@ -93,14 +93,16 @@ namespace Telesync
             }
         }
 
-        private void btnPular_Click(object sender, EventArgs e)
+        private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
-        private void btn_cancelar_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            var resultado = usuarioDao.excluirUsuario(txtCPF.Text);
+            MessageBox.Show(resultado);
+            this.Dispose();
         }
     }
 }

@@ -81,9 +81,15 @@ namespace Telesync.repositories
             return rodarUpdate();
         }
 
-        private string rodarUpdate()
+        public string excluirUsuario(string cpf)
         {
-            return rodarInsert() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
+            comando.Parameters.Clear();
+
+            comando.CommandText = "DELETE FROM TCLIENTE WHERE CPF = @CPF";
+
+            comando.Parameters.AddWithValue("@CPF", cpf);
+
+            return rodarDelete();
         }
 
         private bool inserirLogin(Login login, string cpf)
@@ -99,7 +105,22 @@ namespace Telesync.repositories
             return rodarInsert();
         }
 
+        private string rodarDelete()
+        {
+            return rodarDml() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
+        }
+
+        private string rodarUpdate()
+        {
+            return rodarDml() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
+        }
+
         private bool rodarInsert()
+        {
+            return rodarDml();
+        }
+
+        private bool rodarDml()
         {
             try
             {

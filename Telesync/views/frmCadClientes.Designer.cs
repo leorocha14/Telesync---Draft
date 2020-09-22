@@ -30,7 +30,6 @@
         {
             this.label13 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
-            this.btnPular = new System.Windows.Forms.Button();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtUF = new System.Windows.Forms.TextBox();
@@ -61,6 +60,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtDtNasc = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label13
@@ -81,17 +81,6 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(92, 20);
             this.txtSenha.TabIndex = 125;
-            // 
-            // btnPular
-            // 
-            this.btnPular.Location = new System.Drawing.Point(173, 302);
-            this.btnPular.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPular.Name = "btnPular";
-            this.btnPular.Size = new System.Drawing.Size(70, 41);
-            this.btnPular.TabIndex = 124;
-            this.btnPular.Text = "Pular para LoginForm";
-            this.btnPular.UseVisualStyleBackColor = true;
-            this.btnPular.Click += new System.EventHandler(this.btnPular_Click);
             // 
             // txtBairro
             // 
@@ -368,18 +357,29 @@
             this.label15.TabIndex = 129;
             this.label15.Text = "Data de nasc.";
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(166, 302);
+            this.btnExcluir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(70, 41);
+            this.btnExcluir.TabIndex = 130;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // frmCadClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 375);
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtUsuarioId);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtDtNasc);
-            this.Controls.Add(this.btnPular);
             this.Controls.Add(this.txtBairro);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtUF);
@@ -418,7 +418,6 @@
 
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtSenha;
-        private System.Windows.Forms.Button btnPular;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtUF;
@@ -449,5 +448,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtDtNasc;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
