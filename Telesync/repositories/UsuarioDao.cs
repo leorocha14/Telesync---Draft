@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Telesync.config;
 using Telesync.models;
+using System.Security.Cryptography;
 
 namespace Telesync.repositories
 {
@@ -14,6 +15,7 @@ namespace Telesync.repositories
     {
         private static Conexao _conexao = new Conexao();
         private static MySqlCommand comando = new MySqlCommand();
+        MySqlDataReader dr;
         private static readonly string OPERACAO_SUCESSO = "Operação realizada com Sucesso!";
         private static readonly string OPERACAO_ERRO = "Erro! Operação falhou devido a: ";
 
@@ -102,7 +104,86 @@ namespace Telesync.repositories
             {
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
+        }
+        public string inserirPedido(Pedido pedido)
+        {
+            comando.Parameters.Clear();
 
+            comando.CommandText = "INSERT INTO TPEDIDO (NUMPEDIDO) VALUE (@NUMEROPEDIDO)";
+
+            comando.Parameters.AddWithValue("@NUMEROPEDIDO", pedido.numPedido);
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
+
+        }
+        public string inserirPlanoCliente(PedidoCliente pedidoCliente)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "INSERT INTO TPEDIDO_CLIENTE (NUMPEDCLI, CPFCLIENTE, NUMPED, NOMEPLANO, DDD, NUMERO) VALUE (@NUMEROPEDCLIENTE, @CPFCLI, @NUMPED, @NOMEPLANO, @DDD, @NUMERO)";
+
+            comando.Parameters.AddWithValue("@NUMEROPEDCLIENTE", pedidoCliente.numPedCli);
+            comando.Parameters.AddWithValue("@CPFCLI", pedidoCliente.cpfCliente);
+            comando.Parameters.AddWithValue("@NUMPED", pedidoCliente.numPed);
+            comando.Parameters.AddWithValue("@NOMEPLANO", pedidoCliente.nomePlano);
+            comando.Parameters.AddWithValue("@DDD", pedidoCliente.ddd);
+            comando.Parameters.AddWithValue("@NUMERO", pedidoCliente.numero);
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
+        }
+        public bool verificarPlanoCliente(PedidoCliente pedidoCliente)
+        {
+            bool verifica;
+            var cpf = "";
+            var numPedido = "";
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT NUMPEDIDO, CPF FROM TCLIENTE JOIN TPEDIDO WHERE CPF = @CPFCLI AND NUMPEDIDO = @NUMPED";
+
+            comando.Parameters.AddWithValue("@CPFCLI", pedidoCliente.cpfCliente);
+            comando.Parameters.AddWithValue("NUMPED", pedidoCliente.numPed);
+            try
+            {
+                comando.Connection = _conexao.conectar();
+
+                dr = comando.ExecuteReader();
+                
+                while (dr.Read()){
+                    cpf = "cpf".ToString();
+                    numPedido = "numPedido".ToString();                   
+                }
+                if (cpf == pedidoCliente.cpfCliente && numPedido == pedidoCliente.numPed)
+                {
+                    verifica = true;
+                }
+                else
+                {
+                    verifica = false;
+                }
+                return verifica;
+            }
+            catch(MySqlException e)
+            {
+                throw e;
+            }
         }
     }
 }
