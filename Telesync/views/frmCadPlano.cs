@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,6 +17,8 @@ namespace Telesync.views
     {
         int contL = 0;
         int contC = 0;
+        int qtddePlan = 0;
+        double valorTotal = 0;
         private static UsuarioDao usuarioDao = new UsuarioDao();
         public frmCadPlano()
         {
@@ -23,15 +26,15 @@ namespace Telesync.views
         }
         public static string gerarNumero(int x, int y)
         {
-            string tel = "";
+            string num = "";
             Random randNum = new Random();
-            tel = randNum.Next(x, y).ToString();
-            return tel;
+            num = randNum.Next(x, y).ToString();
+            return num;
         }
 
         private void frmCadPlano_Load(object sender, EventArgs e)
         {
-            txtNumPedido.Text = gerarNumero(0, 10000);
+            txtCodVenda.Text = gerarNumero(0, 10000);
 
 
             dgvPlanos.Columns.Add("NumPedido", "NumPedido");
@@ -43,26 +46,48 @@ namespace Telesync.views
             dgvPlanos.Columns.Add("CPF", "CPF");
 
             dgvPlanos.Rows.Add(Top);
+
+            DateTime data = DateTime.Today;
+            txtData.Text = data.ToString();
+            txtDtVencimento.Text = data.AddMonths(1).ToString();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             txtNumero.Text = gerarNumero(99000000, 99999999);
-            txtNumPedCli.Text = gerarNumero(10001, 20001);
+            txtCodVendaCli.Text = gerarNumero(10001, 20000);
+            txtCodVendaPlano.Text = gerarNumero(20001, 30000);
 
-            VendaCliente pedidoCliente = new VendaCliente(txtNumPedCli.Text, txtCPF.Text, txtNumPedido.Text, cbPlano.Text, txtDDD.Text, txtNumero.Text);
+            VendaCliente vendaCliente = new VendaCliente(txtCodVendaCli.Text, txtCodVenda.Text, txtCPF.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
-            var resultado = usuarioDao.inserirPlanoCliente(pedidoCliente);
+            VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text);
+
+            usuarioDao.inserirVendaPlano(vendaPlano);
+
+            var resultado = usuarioDao.inserirVendaCliente(vendaCliente);
 
             MessageBox.Show(resultado);
 
 
-            dgvPlanos.Rows[contL].Cells[contC].Value = txtNumPedido.Text;
+            dgvPlanos.Rows[contL].Cells[contC].Value = txtCodVenda.Text;
             dgvPlanos.Rows[contL].Cells[contC+1].Value = txtNumero.Text;
             dgvPlanos.Rows[contL].Cells[contC+2].Value = txtDDD.Text;
             dgvPlanos.Rows[contL].Cells[contC+3].Value = txtCPF.Text;
             contL += 1;
-            
+
+            txtNumChip.Text = gerarNumero(100000000, 1000000000);
+
+            txtQttdPlanos.Text = qtddePlan.ToString();
+            qtddePlan += 1;
+
+            Plano plano = new Plano(txtCodPlano.Text);
+
+            txtValor.Text = usuarioDao.verificarValorPlano(plano);
+
+            valorTotal += Convert.ToDouble(txtValor.Text);
+
+            txtValorTotal.Text = valorTotal.ToString();
+
         }
 
         private void dgvPlanos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -72,11 +97,17 @@ namespace Telesync.views
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            Venda pedido = new Venda(txtNumPedido.Text);
+            Venda venda = new Venda(txtCodVenda.Text, txtQttdPlanos.Text, txtData.Text, txtDtVencimento.Text, txtObs.Text, txtValorTotal.Text);
 
-            var resultado = usuarioDao.inserirPedido(pedido);
+            var resultado = usuarioDao.inserirVenda(venda);
 
             MessageBox.Show(resultado);
+        }
+
+        private void cbPlano_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            txtCodPlano.Text = usuarioDao.verificarCodPlano(cbPlano.Text);
         }
     }
 }

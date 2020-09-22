@@ -105,13 +105,18 @@ namespace Telesync.repositories
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
         }
-        public string inserirPedido(Venda pedido)
+        public string inserirVenda(Venda venda)
         {
             comando.Parameters.Clear();
 
-            comando.CommandText = "INSERT INTO TPEDIDO (NUMPEDIDO) VALUE (@NUMEROPEDIDO)";
+            comando.CommandText = "INSERT INTO TVENDA (CODVENDA, QTDDPLANOS, DTVENDA, DTVENCIMENTO, VALORTOTAL, OBS) VALUE (@CODVENDA, @QTDDPLANOS, @DTVENDA, @DTVENCIMENTO, @VALORTOTAL, @OBS)";
 
-            comando.Parameters.AddWithValue("@NUMEROPEDIDO", pedido.numPedido);
+            comando.Parameters.AddWithValue("@CODVENDA", venda.codVenda);
+            comando.Parameters.AddWithValue("@QTDDPLANOS", venda.qtddPlanos);
+            comando.Parameters.AddWithValue("@DTVENDA", venda.dtVenda);
+            comando.Parameters.AddWithValue("@DTVENCIMENTO", venda.dtVencimento);
+            comando.Parameters.AddWithValue("@VALORTOTAL", venda.valorTotal);
+            comando.Parameters.AddWithValue("@OBS", venda.obs);
             try
             {
                 comando.Connection = _conexao.conectar();
@@ -125,18 +130,18 @@ namespace Telesync.repositories
             }
 
         }
-        public string inserirPlanoCliente(VendaCliente pedidoCliente)
+        public string inserirVendaCliente(VendaCliente vendaCliente)
         {
             comando.Parameters.Clear();
 
-            comando.CommandText = "INSERT INTO TPEDIDO_CLIENTE (NUMPEDCLI, CPFCLIENTE, NUMPED, NOMEPLANO, DDD, NUMERO) VALUE (@NUMEROPEDCLIENTE, @CPFCLI, @NUMPED, @NOMEPLANO, @DDD, @NUMERO)";
+            comando.CommandText = "INSERT INTO TVENDACLIENTE (CODVENDACLI, CPFCLIENTE, CODVENDA, DDD, NUMERO, NUMCHIP) VALUE (@CODVENDACLI, @CPFCLIENTE, @CODVENDA, @DDD, @NUMERO, @NUMCHIP)";
 
-            comando.Parameters.AddWithValue("@NUMEROPEDCLIENTE", pedidoCliente.numPedCli);
-            comando.Parameters.AddWithValue("@CPFCLI", pedidoCliente.cpfCliente);
-            comando.Parameters.AddWithValue("@NUMPED", pedidoCliente.numPed);
-            comando.Parameters.AddWithValue("@NOMEPLANO", pedidoCliente.nomePlano);
-            comando.Parameters.AddWithValue("@DDD", pedidoCliente.ddd);
-            comando.Parameters.AddWithValue("@NUMERO", pedidoCliente.numero);
+            comando.Parameters.AddWithValue("@CODVENDACLI", vendaCliente.codVendaCli);
+            comando.Parameters.AddWithValue("@CPFCLIENTE", vendaCliente.cpfCliente);
+            comando.Parameters.AddWithValue("@CODVENDA", vendaCliente.codVenda);
+            comando.Parameters.AddWithValue("@DDD", vendaCliente.ddd);
+            comando.Parameters.AddWithValue("@NUMERO", vendaCliente.numero);
+            comando.Parameters.AddWithValue("@NUMCHIP", vendaCliente.numChip);
             try
             {
                 comando.Connection = _conexao.conectar();
@@ -148,6 +153,77 @@ namespace Telesync.repositories
             {
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
+        }
+        public void inserirVendaPlano(VendaPlano vendaPlano)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "INSERT INTO TVENDAPLANO (CODVENDAPLANO, CODPLANO, CODVENDA) VALUE (@CODVENDAPLANO, @CODPLANO, @CODVENDA)";
+
+            comando.Parameters.AddWithValue("@CODVENDAPLANO", vendaPlano.codVendaPlano);
+            comando.Parameters.AddWithValue("@CODPLANO", vendaPlano.codPlano);
+            comando.Parameters.AddWithValue("@CODVENDA", vendaPlano.codVenda);
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+        public string verificarValorPlano(Plano plano)
+        {
+            string valorPlano = "";
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT VALOR FROM TPLANO WHERE CODPLANO = @CODPLANO";
+
+            comando.Parameters.AddWithValue("@CODPLANO", plano.codPlano);
+
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                dr = comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    valorPlano = Convert.ToString(dr["valor"]);
+                }
+                dr.Close();
+                return valorPlano;
+            }
+            catch(MySqlException e)
+            {
+                throw e;
+            }          
+        }
+        public string verificarCodPlano(string nomePlano)
+        {
+            string codPlano = "";
+
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT CODPLANO FROM TPLANO WHERE NOMEPLANO = @NOMEPLANO";
+
+            comando.Parameters.AddWithValue("@NOMEPLANO", nomePlano);
+
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                dr = comando.ExecuteReader();
+                while (dr.Read())
+                {
+                    codPlano = Convert.ToString(dr["codPlano"]);
+                }
+                dr.Close();
+                return codPlano;
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }           
         }
         public bool verificarPlanoCliente(VendaCliente pedidoCliente)
         {
@@ -156,10 +232,10 @@ namespace Telesync.repositories
             var numPedido = "";
             comando.Parameters.Clear();
 
-            comando.CommandText = "SELECT NUMPEDIDO, CPF FROM TCLIENTE JOIN TPEDIDO WHERE CPF = @CPFCLI AND NUMPEDIDO = @NUMPED";
+            comando.CommandText = "SELECT CODVENDA, CPF FROM TCLIENTE JOIN TVENDA WHERE CPF = @CPFCLI AND CODVENDA = @CODVENDA";
 
             comando.Parameters.AddWithValue("@CPFCLI", pedidoCliente.cpfCliente);
-            comando.Parameters.AddWithValue("NUMPED", pedidoCliente.numPed);
+            comando.Parameters.AddWithValue("NUMPED", pedidoCliente.codVenda);
             try
             {
                 comando.Connection = _conexao.conectar();
@@ -170,7 +246,7 @@ namespace Telesync.repositories
                     cpf = "cpf".ToString();
                     numPedido = "numPedido".ToString();                   
                 }
-                if (cpf == pedidoCliente.cpfCliente && numPedido == pedidoCliente.numPed)
+                if (cpf == pedidoCliente.cpfCliente && numPedido == pedidoCliente.codVenda)
                 {
                     verifica = true;
                 }

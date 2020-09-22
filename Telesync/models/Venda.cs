@@ -11,20 +11,20 @@ namespace Telesync.models
 
         public string codVenda { get; private set; }
         public string qtddPlanos { get; private set; }
-        public string dataVenda { get; set; }
-        public string dataVencimento { get; private set; }
+        public string dtVenda { get; set; }
+        public string dtVencimento { get; private set; }
         public string valorTotal { get; private set; }
         public string obs { get; private set; }
 
 
 
-        public Venda(string codVenda, string qtddPlanos, string dataVenda, string dataVencimento, string obs,string valorTotal)
+        public Venda(string codVenda, string qtddPlanos, string dtVenda, string dtVencimento, string obs,string valorTotal)
         {
             this.codVenda = codVenda;
             this.qtddPlanos = qtddPlanos;
-            this.dataVenda = dataVenda;
+            this.dtVenda = dtVenda;
             this.valorTotal = valorTotal;
-            this.dataVencimento = dataVencimento;
+            this.dtVencimento = dtVencimento;
             this.obs = obs;
         }
     }

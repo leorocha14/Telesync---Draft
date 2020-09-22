@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Telesync.models
 {
-    class VendaPlano
+    public class VendaPlano
     {
         public string codVendaPlano { get; private set; }
         public string codVenda { get; private set; }
