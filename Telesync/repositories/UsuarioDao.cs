@@ -62,6 +62,8 @@ namespace Telesync.repositories
 
         public string excluirUsuario(string cpf)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "DELETE FROM TCLIENTE WHERE CPF = @CPF";
 
             comando.Parameters.AddWithValue("@CPF", cpf);
@@ -77,6 +79,30 @@ namespace Telesync.repositories
             {
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
+        }
+
+        public string alterarSenha(string cpf, string novaSenha)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "UPDATE TLOGIN SET SENHA = @SENHA WHERE CPF_USUARIO = @CPF_USUARIO";
+
+            comando.Parameters.AddWithValue("@CPF_USUARIO", cpf);
+            comando.Parameters.AddWithValue("@SENHA", novaSenha);
+
+
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return OPERACAO_SUCESSO;
+            }
+            catch (MySqlException e)
+            {
+                return String.Concat(OPERACAO_ERRO, e.Message);
+            }
+
         }
     }
 }
