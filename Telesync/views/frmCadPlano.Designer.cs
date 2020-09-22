@@ -100,6 +100,7 @@
             // 
             // cbPlano
             // 
+            this.cbPlano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlano.FormattingEnabled = true;
             this.cbPlano.Items.AddRange(new object[] {
             "familia",
