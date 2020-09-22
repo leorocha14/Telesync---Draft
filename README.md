@@ -9,3 +9,16 @@ A sua branch de trabalho sempre deverá ser baseado na DEVELOP. O nome da branch
 Criar sua branch > programar > commitar e dar push para sua branch > abrir um PR para develop
 
 O PR para MASTER será criado a partir da DEVELOP, de tempos em tempos
+
+## Develop2
+Banco Telesync
+Realize o download e instalaçao  o MySQL para a versa~ao apropriada para seu computador
+Na instalaçao - Metodo de Autenticaçao:
+* Use senhas forte para encriptografar (RECOMENDADO)
+Por padrao deixemos a senha como 123456 (ROOT)
+
+Cliqe na instancia local, digite a senha para ter acesso ao editor.
+Importe o arquivo Telesync_sql.sql e execute.
+
+Em caso de duvidas na instalaçao e configuraçao acesse este video: https://www.youtube.com/watch?v=fmerTu7dWk8
+
