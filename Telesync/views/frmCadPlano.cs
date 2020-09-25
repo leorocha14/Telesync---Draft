@@ -63,13 +63,11 @@ namespace Telesync.views
 
             qtddePlan += 1;
 
-            VendaCliente vendaCliente = new VendaCliente(txtCodVendaCli.Text, txtCodVenda.Text, txtCPF.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
-            VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text);
+            VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
-            usuarioDao.inserirVendaPlano(vendaPlano);
+            var resultado = usuarioDao.inserirVendaPlano(vendaPlano);
 
-            var resultado = usuarioDao.inserirVendaCliente(vendaCliente);
 
             MessageBox.Show(resultado);
 
@@ -77,7 +75,6 @@ namespace Telesync.views
             dgvPlanos.Rows[contL].Cells[contC].Value = txtCodVenda.Text;
             dgvPlanos.Rows[contL].Cells[contC+1].Value = txtNumero.Text;
             dgvPlanos.Rows[contL].Cells[contC+2].Value = txtDDD.Text;
-            dgvPlanos.Rows[contL].Cells[contC+3].Value = txtCPF.Text;
             dgvPlanos.Rows[contL].Cells[contC+4].Value = txtNumChip.Text;
             contL += 1;
 
@@ -100,7 +97,7 @@ namespace Telesync.views
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            Venda venda = new Venda(txtCodVenda.Text, txtQttdPlanos.Text, txtData.Text, txtDtVencimento.Text, txtObs.Text, txtValorTotal.Text);
+            Venda venda = new Venda(txtCodVenda.Text, txtCPF.Text, txtCodFormaPag.Text, txtQttdPlanos.Text, txtData.Text, txtDtVencimento.Text, txtObs.Text, txtValorTotal.Text);
 
             var resultado = usuarioDao.inserirVenda(venda);
 
@@ -111,6 +108,11 @@ namespace Telesync.views
         {
             
             txtCodPlano.Text = usuarioDao.verificarCodPlano(cbPlano.Text);
+        }
+
+        private void cbFormaPag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtCodFormaPag.Text = usuarioDao.verificarFormaPag(cbFormaPag.Text);
         }
     }
 }

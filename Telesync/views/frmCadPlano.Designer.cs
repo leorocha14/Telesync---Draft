@@ -61,12 +61,16 @@
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtObs = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbFormaPag = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtCodFormaPag = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(540, 26);
+            this.btnAdicionar.Location = new System.Drawing.Point(12, 291);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionar.TabIndex = 0;
@@ -76,7 +80,7 @@
             // 
             // btnFinalizar
             // 
-            this.btnFinalizar.Location = new System.Drawing.Point(540, 83);
+            this.btnFinalizar.Location = new System.Drawing.Point(164, 291);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(75, 23);
             this.btnFinalizar.TabIndex = 1;
@@ -177,7 +181,7 @@
             // dgvPlanos
             // 
             this.dgvPlanos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlanos.Location = new System.Drawing.Point(15, 283);
+            this.dgvPlanos.Location = new System.Drawing.Point(12, 320);
             this.dgvPlanos.Name = "dgvPlanos";
             this.dgvPlanos.RowHeadersWidth = 51;
             this.dgvPlanos.RowTemplate.Height = 24;
@@ -240,7 +244,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(470, 192);
+            this.label9.Location = new System.Drawing.Point(453, 101);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 17);
             this.label9.TabIndex = 21;
@@ -248,7 +252,7 @@
             // 
             // txtNumChip
             // 
-            this.txtNumChip.Location = new System.Drawing.Point(541, 187);
+            this.txtNumChip.Location = new System.Drawing.Point(524, 98);
             this.txtNumChip.Name = "txtNumChip";
             this.txtNumChip.ReadOnly = true;
             this.txtNumChip.Size = new System.Drawing.Size(119, 22);
@@ -308,7 +312,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(506, 152);
+            this.label13.Location = new System.Drawing.Point(449, 76);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 17);
             this.label13.TabIndex = 29;
@@ -316,7 +320,7 @@
             // 
             // txtValorTotal
             // 
-            this.txtValorTotal.Location = new System.Drawing.Point(601, 152);
+            this.txtValorTotal.Location = new System.Drawing.Point(524, 73);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
             this.txtValorTotal.Size = new System.Drawing.Size(60, 22);
@@ -358,11 +362,54 @@
             this.txtObs.Size = new System.Drawing.Size(227, 108);
             this.txtObs.TabIndex = 32;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(524, 19);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(120, 17);
+            this.label16.TabIndex = 35;
+            this.label16.Text = "FormaPagamento";
+            // 
+            // cbFormaPag
+            // 
+            this.cbFormaPag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFormaPag.FormattingEnabled = true;
+            this.cbFormaPag.Items.AddRange(new object[] {
+            "Debito",
+            "Boleto"});
+            this.cbFormaPag.Location = new System.Drawing.Point(524, 43);
+            this.cbFormaPag.Name = "cbFormaPag";
+            this.cbFormaPag.Size = new System.Drawing.Size(120, 24);
+            this.cbFormaPag.TabIndex = 34;
+            this.cbFormaPag.SelectedIndexChanged += new System.EventHandler(this.cbFormaPag_SelectedIndexChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(274, 241);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(96, 17);
+            this.label17.TabIndex = 37;
+            this.label17.Text = "codFormaPag";
+            // 
+            // txtCodFormaPag
+            // 
+            this.txtCodFormaPag.Location = new System.Drawing.Point(383, 238);
+            this.txtCodFormaPag.Name = "txtCodFormaPag";
+            this.txtCodFormaPag.ReadOnly = true;
+            this.txtCodFormaPag.Size = new System.Drawing.Size(60, 22);
+            this.txtCodFormaPag.TabIndex = 36;
+            // 
             // frmCadPlano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 467);
+            this.ClientSize = new System.Drawing.Size(692, 467);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtCodFormaPag);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.cbFormaPag);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtObs);
             this.Controls.Add(this.label14);
@@ -440,5 +487,9 @@
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtObs;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cbFormaPag;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtCodFormaPag;
     }
 }
