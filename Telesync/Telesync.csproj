@@ -55,9 +55,14 @@
     <Compile Include="config\NinjectConfig.cs" />
     <Compile Include="factories\IValidationFactory.cs" />
     <Compile Include="factories\ValidationFactory.cs" />
+    <Compile Include="models\FormaPag.cs" />
     <Compile Include="models\Login.cs" />
+    <Compile Include="models\Venda.cs" />
+    <Compile Include="models\Plano.cs" />
+    <Compile Include="models\VendaPlano.cs" />
     <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="repositories\VendaDao.cs" />
     <Compile Include="resources\script\tables.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +84,12 @@
       <DependentUpon>frmCadClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="validations\LoginValidation.cs" />
+    <Compile Include="views\frmCadPlano.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\frmCadPlano.Designer.cs">
+      <DependentUpon>frmCadPlano.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="views\frmCadPlano.resx">
+      <DependentUpon>frmCadPlano.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -198,7 +198,6 @@ namespace Telesync.repositories
             {
                 return String.Concat(OPERACAO_ERRO, e.Message);
             }
-
-        }
+        }        
     }
 }
