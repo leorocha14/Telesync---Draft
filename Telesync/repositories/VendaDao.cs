@@ -14,7 +14,6 @@ namespace Telesync.repositories
     {
         private static Conexao _conexao = new Conexao();
         private static MySqlCommand comando = new MySqlCommand();
-        MySqlDataReader dr;
         private static readonly string OPERACAO_SUCESSO = "Operação realizada com Sucesso!";
         private static readonly string OPERACAO_ERRO = "Erro! A Operação falhou";
 
@@ -50,7 +49,31 @@ namespace Telesync.repositories
             }
         }
 
-        public string inserirVenda(Venda venda)
+        private string rodarSelect(string nomeColuna)
+        {
+            try
+
+            {
+                comando.Connection = _conexao.conectar();
+
+                var dr = comando.ExecuteReader();
+
+                dr.Read();
+
+                var retornoColuna = Convert.ToString(dr[nomeColuna]);
+
+                dr.Close();
+
+                return retornoColuna;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+                public string inserirVenda(Venda venda)
         {
             comando.Parameters.Clear();
 
@@ -85,58 +108,27 @@ namespace Telesync.repositories
         }
         public string verificarValorPlano(Plano plano)
         {
-            string valorPlano = "";
             comando.Parameters.Clear();
 
             comando.CommandText = "SELECT VALOR FROM TPLANO WHERE CODPLANO = @CODPLANO";
 
             comando.Parameters.AddWithValue("@CODPLANO", plano.codPlano);
 
-            try
-            {
-                comando.Connection = _conexao.conectar();
-                dr = comando.ExecuteReader();
-                while (dr.Read())
-                {
-                    valorPlano = Convert.ToString(dr["valor"]);
-                }
-                dr.Close();
-                return valorPlano;
-            }
-            catch (MySqlException e)
-            {
-                throw e;
-            }
+            return rodarSelect("valor");
+
         }
         public string verificarCodPlano(string nomePlano)
-        {
-            string codPlano = "";
-
+        {           
             comando.Parameters.Clear();
 
             comando.CommandText = "SELECT CODPLANO FROM TPLANO WHERE NOMEPLANO = @NOMEPLANO";
 
             comando.Parameters.AddWithValue("@NOMEPLANO", nomePlano);
 
-            try
-            {
-                comando.Connection = _conexao.conectar();
-                dr = comando.ExecuteReader();
-                while (dr.Read())
-                {
-                    codPlano = Convert.ToString(dr["codPlano"]);
-                }
-                dr.Close();
-                return codPlano;
-            }
-            catch (MySqlException e)
-            {
-                throw e;
-            }
+            return rodarSelect("codPlano");
         }
         public string verificarFormaPag(string formaPagamento)
         {
-            string codFormaPag = "";
 
             comando.Parameters.Clear();
 
@@ -144,21 +136,7 @@ namespace Telesync.repositories
 
             comando.Parameters.AddWithValue("@FORMAPAGAMENTO", formaPagamento);
 
-            try
-            {
-                comando.Connection = _conexao.conectar();
-                dr = comando.ExecuteReader();
-                while (dr.Read())
-                {
-                    codFormaPag = Convert.ToString(dr["codFormaPag"]);
-                }
-                dr.Close();
-                return codFormaPag;
-            }
-            catch (MySqlException e)
-            {
-                throw e;
-            }
+            return rodarSelect("codFormaPag");
         }
     }
 }
