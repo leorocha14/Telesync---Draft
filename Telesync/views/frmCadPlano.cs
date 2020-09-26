@@ -19,7 +19,7 @@ namespace Telesync.views
         int contC = 0;
         int qtddePlan = 0;
         double valorTotal = 0;
-        private static UsuarioDao usuarioDao = new UsuarioDao();
+        private static VendaDao vendaDao = new VendaDao();
         public frmCadPlano()
         {
             InitializeComponent();
@@ -66,7 +66,7 @@ namespace Telesync.views
 
             VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
-            var resultado = usuarioDao.inserirVendaPlano(vendaPlano);
+            var resultado = vendaDao.inserirVendaPlano(vendaPlano);
 
 
             MessageBox.Show(resultado);
@@ -82,7 +82,7 @@ namespace Telesync.views
 
             Plano plano = new Plano(txtCodPlano.Text);
 
-            txtValor.Text = usuarioDao.verificarValorPlano(plano);
+            txtValor.Text = vendaDao.verificarValorPlano(plano);
 
             valorTotal += Convert.ToDouble(txtValor.Text);
 
@@ -99,7 +99,7 @@ namespace Telesync.views
         {
             Venda venda = new Venda(txtCodVenda.Text, txtCPF.Text, txtCodFormaPag.Text, txtQttdPlanos.Text, txtData.Text, txtDtVencimento.Text, txtObs.Text, txtValorTotal.Text);
 
-            var resultado = usuarioDao.inserirVenda(venda);
+            var resultado = vendaDao.inserirVenda(venda);
 
             MessageBox.Show(resultado);
         }
@@ -107,12 +107,12 @@ namespace Telesync.views
         private void cbPlano_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            txtCodPlano.Text = usuarioDao.verificarCodPlano(cbPlano.Text);
+            txtCodPlano.Text = vendaDao.verificarCodPlano(cbPlano.Text);
         }
 
         private void cbFormaPag_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtCodFormaPag.Text = usuarioDao.verificarFormaPag(cbFormaPag.Text);
+            txtCodFormaPag.Text = vendaDao.verificarFormaPag(cbFormaPag.Text);
         }
     }
 }

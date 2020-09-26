@@ -62,6 +62,7 @@
     <Compile Include="models\VendaPlano.cs" />
     <Compile Include="repositories\LoginDao.cs" />
     <Compile Include="repositories\UsuarioDao.cs" />
+    <Compile Include="repositories\VendaDao.cs" />
     <Compile Include="resources\script\tables.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
