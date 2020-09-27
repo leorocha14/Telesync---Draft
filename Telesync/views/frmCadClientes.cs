@@ -66,7 +66,7 @@ namespace Telesync
                 txtEmail.Text, txtDtNasc.Text, txtBairro.Text, txtCEP.Text, txtLogradouro.Text, 
                 txtNumero.Text, txtUF.Text, txtCidade.Text, txtComplemento.Text);
 
-            Login login = new Login(txtUsuarioId.Text, txtSenha.Text);
+            Login login = new Login(txtUsuarioId.Text, txtEmail.Text, txtSenha.Text);
 
             if (ehAlteracao)
             {

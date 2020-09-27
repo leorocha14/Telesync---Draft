@@ -13,7 +13,7 @@ namespace Telesync.validations
         public override void validar(Object login)
         {
             Debug.Assert(!login.Equals(typeof(Login)));
-            var validacaoUsuario = loginDao.validarUsuario((Login)login);
+            var validacaoUsuario = loginDao.validarLogin((Login)login);
             if (!validacaoUsuario)
             {
                 MessageBox.Show("Usuário inválido");

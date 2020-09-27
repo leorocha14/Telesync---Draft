@@ -22,10 +22,13 @@ namespace Telesync.repositories
 
         public string inserirUsuario(Usuario usuario, Login login)
         {
+            LoginDao loginDao = new LoginDao();
+            var insertLogin = loginDao.inserirLogin(login, 0); // 0 - Setando permissao basica para usuario cliente
+
             comando.Parameters.Clear();
 
-            comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOME_MAE, SEXO, EMAIL, DT_NASC, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO) " +
-                "VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @DT_NASC, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO)";
+            comando.CommandText = "INSERT INTO TCliente (CPF, NOME, NOMEMAE, SEXO, EMAIL, DTNASC, BAIRRO, CEP, LOGRADOURO, NUMERO, UF, CIDADE, COMPLEMENTO, CODLOGIN) " +
+                "VALUE (@CPF, @NOME, @NOMEMAE, @SEXO, @EMAIL, @DT_NASC, @BAIRRO, @CEP, @LOGRADOURO, @NUMERO, @UF, @CIDADE, @COMPLEMENTO, @CODLOGIN)";
 
             comando.Parameters.AddWithValue("@CPF", usuario.cpf);
             comando.Parameters.AddWithValue("@NOME", usuario.nome);
@@ -40,10 +43,10 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@UF", usuario.uf);
             comando.Parameters.AddWithValue("@CIDADE", usuario.cidade);
             comando.Parameters.AddWithValue("@COMPLEMENTO", usuario.complemento);
+            comando.Parameters.AddWithValue("@CODLOGIN", login.usuarioId);
 
             var insertUsuario = rodarInsert();
             
-            var insertLogin = inserirLogin(login, usuario.cpf);
 
             return insertUsuario && insertLogin ? OPERACAO_SUCESSO : OPERACAO_ERRO;
         }
@@ -90,19 +93,6 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@CPF", cpf);
 
             return rodarDelete();
-        }
-
-        private bool inserirLogin(Login login, string cpf)
-        {
-            comando.Parameters.Clear();
-
-            comando.CommandText = "INSERT INTO TLogin (LOGIN, SENHA, CPF_USUARIO) VALUE (@LOGIN, @SENHA, @CPF_USUARIO)";
-
-            comando.Parameters.AddWithValue("@LOGIN", login.usuarioId);
-            comando.Parameters.AddWithValue("@SENHA", login.senha);
-            comando.Parameters.AddWithValue("@CPF_USUARIO", cpf);
-
-            return rodarInsert();
         }
 
         private string rodarDelete()

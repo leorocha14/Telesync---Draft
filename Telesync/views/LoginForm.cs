@@ -18,10 +18,10 @@ namespace Telesync
 
         private void LogarBtn_Click(object sender, EventArgs e)
         {
-            Login login = new Login(userTextBox.Text, pwdTextBox.Text);
+            Login login = new Login(userTextBox.Text, null, pwdTextBox.Text); // null - email não é informado no login
             _validation.validar(login);
-            frmCadClientes cadastroForm = new frmCadClientes(login);
-            cadastroForm.Show();
+            var homePage = new HomePage(login);
+            homePage.Show();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
