@@ -39,11 +39,13 @@ namespace Telesync.views
 
             dgvPlanos.Columns.Add("CodVenda", "CodVenda");
 
+            dgvPlanos.Columns.Add("CodPlano", "CodPlano");
+
+            dgvPlanos.Columns.Add("CodVendaPlano", "CodVendaPlano");
+
             dgvPlanos.Columns.Add("Numero", "Numero");
 
             dgvPlanos.Columns.Add("DDD", "DDD");
-
-            dgvPlanos.Columns.Add("CPF", "CPF");
 
             dgvPlanos.Columns.Add("NumChip", "NumChip");
 
@@ -57,7 +59,6 @@ namespace Telesync.views
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             txtNumero.Text = gerarNumero(99000000, 99999999);
-            txtCodVendaCli.Text = gerarNumero(10001, 20000);
             txtCodVendaPlano.Text = gerarNumero(20001, 30000);
             txtNumChip.Text = gerarNumero(100000000, 1000000000);
 
@@ -73,9 +74,11 @@ namespace Telesync.views
 
 
             dgvPlanos.Rows[contL].Cells[contC].Value = txtCodVenda.Text;
-            dgvPlanos.Rows[contL].Cells[contC+1].Value = txtNumero.Text;
-            dgvPlanos.Rows[contL].Cells[contC+2].Value = txtDDD.Text;
-            dgvPlanos.Rows[contL].Cells[contC+4].Value = txtNumChip.Text;
+            dgvPlanos.Rows[contL].Cells[contC+1].Value = txtCodVenda.Text;
+            dgvPlanos.Rows[contL].Cells[contC+2].Value = txtCodVendaPlano.Text;
+            dgvPlanos.Rows[contL].Cells[contC+3].Value = txtNumero.Text;
+            dgvPlanos.Rows[contL].Cells[contC+4].Value = txtDDD.Text;
+            dgvPlanos.Rows[contL].Cells[contC+5].Value = txtNumChip.Text;
             contL += 1;
 
             txtQttdPlanos.Text = qtddePlan.ToString();
@@ -91,8 +94,15 @@ namespace Telesync.views
         }
 
         private void dgvPlanos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        {
+            var vendaPlano = vendaDao.encontrarVendaPlano(dgvPlanos.CurrentCell.Value.ToString());
+
+            txtCodVendaPlano.Text = vendaPlano.codVendaPlano;
+            txtCodPlano.Text = vendaPlano.codPlano;
+            txtDDD.Text = vendaPlano.ddd;
+            txtNumero.Text = vendaPlano.numero;
+            txtNumChip.Text = vendaPlano.numChip;
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)
@@ -105,14 +115,22 @@ namespace Telesync.views
         }
 
         private void cbPlano_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+        {           
             txtCodPlano.Text = vendaDao.verificarCodPlano(cbPlano.Text);
         }
 
         private void cbFormaPag_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtCodFormaPag.Text = vendaDao.verificarFormaPag(cbFormaPag.Text);
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
+
+            var resultado = vendaDao.alterarVendaPlano(vendaPlano);
+
+            MessageBox.Show(resultado);
         }
     }
 }

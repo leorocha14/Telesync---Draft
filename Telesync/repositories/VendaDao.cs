@@ -73,6 +73,38 @@ namespace Telesync.repositories
             }
         }
 
+        private VendaPlano rodarSelectVendaPlano()
+        {
+            try
+
+            {
+                comando.Connection = _conexao.conectar();
+
+                var dr = comando.ExecuteReader();
+
+                dr.Read();
+                                
+                var codPlano = Convert.ToString(dr["codPlano"]);
+                var codVendaPlano = Convert.ToString(dr["codVendaPlano"]);
+                var codVenda = Convert.ToString(dr["codVenda"]);
+                var ddd = Convert.ToString(dr["ddd"]);
+                var numero = Convert.ToString(dr["numero"]);
+                var numeroChip = Convert.ToString(dr["numChip"]);
+
+                VendaPlano vendaPlano = new VendaPlano(codPlano, codVendaPlano, codVenda, ddd, numero, numeroChip);
+
+                dr.Close();
+
+                return vendaPlano;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
                 public string inserirVenda(Venda venda)
         {
             comando.Parameters.Clear();
@@ -137,6 +169,33 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@FORMAPAGAMENTO", formaPagamento);
 
             return rodarSelect("codFormaPag");
+        }
+
+
+        public string alterarVendaPlano(VendaPlano vendaPlano)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "UPDATE TVENDAPLANO SET CODPLANO = @CODPLANO, DDD = @DDD, NUMERO = @NUMERO, NUMCHIP = @NUMCHIP WHERE CODVENDAPLANO = @CODVENDAPLANO";
+
+            comando.Parameters.AddWithValue("@CODVENDAPLANO", vendaPlano.codVendaPlano);
+            comando.Parameters.AddWithValue("@CODPLANO", vendaPlano.codPlano);
+            comando.Parameters.AddWithValue("@DDD", vendaPlano.ddd);
+            comando.Parameters.AddWithValue("@NUMERO", vendaPlano.numero);
+            comando.Parameters.AddWithValue("@NUMCHIP", vendaPlano.numChip);
+
+            return rodarUpdate();
+        }
+
+        public VendaPlano encontrarVendaPlano(string codVendaPlano)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT * FROM TVENDAPLANO WHERE CODVENDAPLANO = @CODVENDAPLANO";
+
+            comando.Parameters.AddWithValue("@CODVENDAPLANO", codVendaPlano);
+
+            return rodarSelectVendaPlano();
         }
     }
 }

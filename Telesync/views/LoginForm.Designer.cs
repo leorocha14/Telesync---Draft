@@ -36,6 +36,7 @@
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnAlterarSenha = new System.Windows.Forms.Button();
             this.btnInserirPedido = new System.Windows.Forms.Button();
+            this.btnAlterarPedido = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // userTextBox
@@ -117,11 +118,23 @@
             this.btnInserirPedido.UseVisualStyleBackColor = true;
             this.btnInserirPedido.Click += new System.EventHandler(this.btnInserirPedido_Click);
             // 
+            // btnAlterarPedido
+            // 
+            this.btnAlterarPedido.Location = new System.Drawing.Point(465, 387);
+            this.btnAlterarPedido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAlterarPedido.Name = "btnAlterarPedido";
+            this.btnAlterarPedido.Size = new System.Drawing.Size(100, 47);
+            this.btnAlterarPedido.TabIndex = 10;
+            this.btnAlterarPedido.Text = "Alterar Pedido";
+            this.btnAlterarPedido.UseVisualStyleBackColor = true;
+            this.btnAlterarPedido.Click += new System.EventHandler(this.btnAlterarPedido_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAlterarPedido);
             this.Controls.Add(this.btnInserirPedido);
             this.Controls.Add(this.btnAlterarSenha);
             this.Controls.Add(this.btnCadastrar);
@@ -148,6 +161,7 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnAlterarSenha;
         private System.Windows.Forms.Button btnInserirPedido;
+        private System.Windows.Forms.Button btnAlterarPedido;
     }
 }
 

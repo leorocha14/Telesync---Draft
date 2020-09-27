@@ -41,8 +41,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtCodVenda = new System.Windows.Forms.TextBox();
             this.dgvPlanos = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCodVendaCli = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCodVendaPlano = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -65,6 +63,7 @@
             this.cbFormaPag = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtCodFormaPag = new System.Windows.Forms.TextBox();
+            this.btnAlterar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,27 +189,10 @@
             this.dgvPlanos.Tag = "";
             this.dgvPlanos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanos_CellContentClick);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(281, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 17);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "CodVendaCli";
-            // 
-            // txtCodVendaCli
-            // 
-            this.txtCodVendaCli.Location = new System.Drawing.Point(383, 40);
-            this.txtCodVendaCli.Name = "txtCodVendaCli";
-            this.txtCodVendaCli.ReadOnly = true;
-            this.txtCodVendaCli.Size = new System.Drawing.Size(60, 22);
-            this.txtCodVendaCli.TabIndex = 14;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(260, 101);
+            this.label7.Location = new System.Drawing.Point(260, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 17);
             this.label7.TabIndex = 19;
@@ -218,16 +200,15 @@
             // 
             // txtCodVendaPlano
             // 
-            this.txtCodVendaPlano.Location = new System.Drawing.Point(383, 98);
+            this.txtCodVendaPlano.Location = new System.Drawing.Point(383, 65);
             this.txtCodVendaPlano.Name = "txtCodVendaPlano";
-            this.txtCodVendaPlano.ReadOnly = true;
             this.txtCodVendaPlano.Size = new System.Drawing.Size(60, 22);
             this.txtCodVendaPlano.TabIndex = 18;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(301, 73);
+            this.label8.Location = new System.Drawing.Point(301, 40);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 17);
             this.label8.TabIndex = 17;
@@ -235,7 +216,7 @@
             // 
             // txtCodPlano
             // 
-            this.txtCodPlano.Location = new System.Drawing.Point(383, 68);
+            this.txtCodPlano.Location = new System.Drawing.Point(383, 35);
             this.txtCodPlano.Name = "txtCodPlano";
             this.txtCodPlano.ReadOnly = true;
             this.txtCodPlano.Size = new System.Drawing.Size(60, 22);
@@ -261,7 +242,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(262, 157);
+            this.label10.Location = new System.Drawing.Point(262, 124);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(112, 17);
             this.label10.TabIndex = 23;
@@ -269,7 +250,7 @@
             // 
             // txtDtVencimento
             // 
-            this.txtDtVencimento.Location = new System.Drawing.Point(383, 154);
+            this.txtDtVencimento.Location = new System.Drawing.Point(383, 121);
             this.txtDtVencimento.Name = "txtDtVencimento";
             this.txtDtVencimento.ReadOnly = true;
             this.txtDtVencimento.Size = new System.Drawing.Size(60, 22);
@@ -278,7 +259,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(336, 129);
+            this.label11.Location = new System.Drawing.Point(336, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 17);
             this.label11.TabIndex = 25;
@@ -286,7 +267,7 @@
             // 
             // txtData
             // 
-            this.txtData.Location = new System.Drawing.Point(383, 126);
+            this.txtData.Location = new System.Drawing.Point(383, 93);
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.Size = new System.Drawing.Size(60, 22);
@@ -295,7 +276,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(288, 182);
+            this.label12.Location = new System.Drawing.Point(288, 149);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 17);
             this.label12.TabIndex = 27;
@@ -303,7 +284,7 @@
             // 
             // txtQttdPlanos
             // 
-            this.txtQttdPlanos.Location = new System.Drawing.Point(383, 182);
+            this.txtQttdPlanos.Location = new System.Drawing.Point(383, 149);
             this.txtQttdPlanos.Name = "txtQttdPlanos";
             this.txtQttdPlanos.ReadOnly = true;
             this.txtQttdPlanos.Size = new System.Drawing.Size(60, 22);
@@ -312,7 +293,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(449, 76);
+            this.label13.Location = new System.Drawing.Point(445, 73);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(73, 17);
             this.label13.TabIndex = 29;
@@ -329,7 +310,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(329, 210);
+            this.label14.Location = new System.Drawing.Point(329, 177);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(41, 17);
             this.label14.TabIndex = 31;
@@ -337,7 +318,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(383, 210);
+            this.txtValor.Location = new System.Drawing.Point(383, 177);
             this.txtValor.Name = "txtValor";
             this.txtValor.ReadOnly = true;
             this.txtValor.Size = new System.Drawing.Size(60, 22);
@@ -387,7 +368,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(274, 241);
+            this.label17.Location = new System.Drawing.Point(274, 208);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(96, 17);
             this.label17.TabIndex = 37;
@@ -395,17 +376,28 @@
             // 
             // txtCodFormaPag
             // 
-            this.txtCodFormaPag.Location = new System.Drawing.Point(383, 238);
+            this.txtCodFormaPag.Location = new System.Drawing.Point(383, 205);
             this.txtCodFormaPag.Name = "txtCodFormaPag";
             this.txtCodFormaPag.ReadOnly = true;
             this.txtCodFormaPag.Size = new System.Drawing.Size(60, 22);
             this.txtCodFormaPag.TabIndex = 36;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(568, 169);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.TabIndex = 38;
+            this.btnAlterar.Text = "alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // frmCadPlano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 467);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtCodFormaPag);
             this.Controls.Add(this.label16);
@@ -428,8 +420,6 @@
             this.Controls.Add(this.txtCodVendaPlano);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCodPlano);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtCodVendaCli);
             this.Controls.Add(this.dgvPlanos);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCodVenda);
@@ -467,8 +457,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCodVenda;
         private System.Windows.Forms.DataGridView dgvPlanos;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCodVendaCli;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCodVendaPlano;
         private System.Windows.Forms.Label label8;
@@ -491,5 +479,6 @@
         private System.Windows.Forms.ComboBox cbFormaPag;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtCodFormaPag;
+        private System.Windows.Forms.Button btnAlterar;
     }
 }

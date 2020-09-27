@@ -41,5 +41,11 @@ namespace Telesync
             frmCadPlano cadPlanoForm = new frmCadPlano();
             cadPlanoForm.Show();
         }
+
+        private void btnAlterarPedido_Click(object sender, EventArgs e)
+        {
+            frmCadPlano cadPlanoForm = new frmCadPlano();
+            cadPlanoForm.Show();
+        }
     }
 }
