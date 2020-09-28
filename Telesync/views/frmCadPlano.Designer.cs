@@ -64,6 +64,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtCodFormaPag = new System.Windows.Forms.TextBox();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnEncVenda = new System.Windows.Forms.Button();
+            this.btnGerarVenda = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,7 +83,7 @@
             // 
             // btnFinalizar
             // 
-            this.btnFinalizar.Location = new System.Drawing.Point(164, 291);
+            this.btnFinalizar.Location = new System.Drawing.Point(93, 291);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(75, 23);
             this.btnFinalizar.TabIndex = 1;
@@ -173,7 +177,6 @@
             // 
             this.txtCodVenda.Location = new System.Drawing.Point(383, 14);
             this.txtCodVenda.Name = "txtCodVenda";
-            this.txtCodVenda.ReadOnly = true;
             this.txtCodVenda.Size = new System.Drawing.Size(60, 22);
             this.txtCodVenda.TabIndex = 11;
             // 
@@ -202,13 +205,14 @@
             // 
             this.txtCodVendaPlano.Location = new System.Drawing.Point(383, 65);
             this.txtCodVendaPlano.Name = "txtCodVendaPlano";
+            this.txtCodVendaPlano.ReadOnly = true;
             this.txtCodVendaPlano.Size = new System.Drawing.Size(60, 22);
             this.txtCodVendaPlano.TabIndex = 18;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(301, 40);
+            this.label8.Location = new System.Drawing.Point(301, 43);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 17);
             this.label8.TabIndex = 17;
@@ -216,7 +220,7 @@
             // 
             // txtCodPlano
             // 
-            this.txtCodPlano.Location = new System.Drawing.Point(383, 35);
+            this.txtCodPlano.Location = new System.Drawing.Point(383, 38);
             this.txtCodPlano.Name = "txtCodPlano";
             this.txtCodPlano.ReadOnly = true;
             this.txtCodPlano.Size = new System.Drawing.Size(60, 22);
@@ -384,7 +388,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(568, 169);
+            this.btnAlterar.Location = new System.Drawing.Point(568, 149);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(75, 23);
             this.btnAlterar.TabIndex = 38;
@@ -392,11 +396,55 @@
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
+            // btnEncVenda
+            // 
+            this.btnEncVenda.Location = new System.Drawing.Point(568, 178);
+            this.btnEncVenda.Name = "btnEncVenda";
+            this.btnEncVenda.Size = new System.Drawing.Size(89, 53);
+            this.btnEncVenda.TabIndex = 39;
+            this.btnEncVenda.Text = "Encontrar Venda";
+            this.btnEncVenda.UseVisualStyleBackColor = true;
+            this.btnEncVenda.Click += new System.EventHandler(this.btnEncVenda_Click);
+            // 
+            // btnGerarVenda
+            // 
+            this.btnGerarVenda.Location = new System.Drawing.Point(568, 237);
+            this.btnGerarVenda.Name = "btnGerarVenda";
+            this.btnGerarVenda.Size = new System.Drawing.Size(89, 53);
+            this.btnGerarVenda.TabIndex = 40;
+            this.btnGerarVenda.Text = "Gerar Venda";
+            this.btnGerarVenda.UseVisualStyleBackColor = true;
+            this.btnGerarVenda.Click += new System.EventHandler(this.btnGerarVenda_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(473, 262);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(89, 28);
+            this.btnExcluir.TabIndex = 41;
+            this.btnExcluir.Text = "excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(174, 291);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 42;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // frmCadPlano
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 467);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnGerarVenda);
+            this.Controls.Add(this.btnEncVenda);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtCodFormaPag);
@@ -480,5 +528,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtCodFormaPag;
         private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnEncVenda;
+        private System.Windows.Forms.Button btnGerarVenda;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

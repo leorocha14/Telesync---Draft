@@ -16,11 +16,12 @@ namespace Telesync.models
         public string valorTotal { get; private set; }
         public string cpfCliente { get; private set; }
         public string codFormaPagamento { get; private set; }
+        public string codStatusPag { get; private set; }
         public string obs { get; private set; }
 
 
 
-        public Venda(string codVenda, string cpfCliente, string codFormaPagamento, string qtddPlanos, string dtVenda, string dtVencimento, string obs,string valorTotal)
+        public Venda(string codVenda, string cpfCliente, string codFormaPagamento, string qtddPlanos, string dtVenda, string dtVencimento, string obs,string valorTotal, string codStatusPag)
         {
             this.codFormaPagamento = codFormaPagamento;
             this.codVenda = codVenda;
@@ -29,6 +30,7 @@ namespace Telesync.models
             this.dtVenda = dtVenda;
             this.valorTotal = valorTotal;
             this.dtVencimento = dtVencimento;
+            this.codStatusPag = codStatusPag;
             this.obs = obs;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,7 @@ namespace Telesync.repositories
                 var retornoColuna = Convert.ToString(dr[nomeColuna]);
 
                 dr.Close();
+                _conexao.desconectar();
 
                 return retornoColuna;
             }
@@ -94,6 +96,7 @@ namespace Telesync.repositories
                 VendaPlano vendaPlano = new VendaPlano(codPlano, codVendaPlano, codVenda, ddd, numero, numeroChip);
 
                 dr.Close();
+                _conexao.desconectar();
 
                 return vendaPlano;
             }
@@ -105,11 +108,77 @@ namespace Telesync.repositories
             }
         }
 
-                public string inserirVenda(Venda venda)
+        private Venda rodarSelectVenda()
+        {
+            try
+
+            {
+                comando.Connection = _conexao.conectar();
+
+                var dr = comando.ExecuteReader();
+
+                dr.Read();
+
+                var codVenda = Convert.ToString(dr["codVenda"]);
+                var cpfCliente = Convert.ToString(dr["cpfCliente"]);
+                var codFormaPag = Convert.ToString(dr["codFormaPag"]);
+                var qttdPlanos = Convert.ToString(dr["qtddPlanos"]);
+                var dtVenda = Convert.ToDateTime(dr["dtVenda"]).ToString();
+                var dtVencimento = Convert.ToDateTime(dr["dtVencimento"]).ToString();
+                var valorTotal = Convert.ToString(dr["valorTotal"]);
+                var codStatusPag = Convert.ToString(dr["codStatusPag"]);
+                var obs = Convert.ToString(dr["obs"]);
+
+                Venda venda = new Venda(codVenda, cpfCliente, codFormaPag, qttdPlanos, dtVenda, dtVencimento, obs, valorTotal, codStatusPag);
+
+                dr.Close();
+                _conexao.desconectar();
+
+                return venda;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+        private DataTable rodarSelectTodosVendaPlano()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                comando.Connection = _conexao.conectar();
+
+                
+
+                dt.Columns.Add("codVendaPlano", typeof(int));
+                dt.Columns.Add("codVenda", typeof(int));
+                dt.Columns.Add("ddd", typeof(string));
+                dt.Columns.Add("numero", typeof(string));
+                dt.Columns.Add("numChip", typeof(string));
+
+                MySqlDataAdapter dta = new MySqlDataAdapter(comando);
+
+                dta.Fill(dt);
+
+                _conexao.desconectar();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public string inserirVenda(Venda venda)
         {
             comando.Parameters.Clear();
 
-            comando.CommandText = "INSERT INTO TVENDA (CODVENDA, CPFCLIENTE, CODFORMAPAG, QTDDPLANOS, DTVENDA, DTVENCIMENTO, VALORTOTAL, OBS) VALUE (@CODVENDA, @CPFCLIENTE, @CODFORMAPAG, @QTDDPLANOS, @DTVENDA, @DTVENCIMENTO, @VALORTOTAL, @OBS)";
+            comando.CommandText = "INSERT INTO TVENDA (CODVENDA, CPFCLIENTE, CODFORMAPAG, QTDDPLANOS, DTVENDA, DTVENCIMENTO, VALORTOTAL, CODSTATUSPAG, OBS) VALUE (@CODVENDA, @CPFCLIENTE, @CODFORMAPAG, @QTDDPLANOS, @DTVENDA, @DTVENCIMENTO, @VALORTOTAL, @CODSTATUSPAG, @OBS)";
 
             comando.Parameters.AddWithValue("@CODVENDA", venda.codVenda);
             comando.Parameters.AddWithValue("@CPFCLIENTE", venda.cpfCliente);
@@ -118,6 +187,7 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@DTVENDA", venda.dtVenda);
             comando.Parameters.AddWithValue("@DTVENCIMENTO", venda.dtVencimento);
             comando.Parameters.AddWithValue("@VALORTOTAL", venda.valorTotal);
+            comando.Parameters.AddWithValue("@CODSTATUSPAG", venda.codStatusPag);
             comando.Parameters.AddWithValue("@OBS", venda.obs);
 
             return rodarInsert() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
@@ -196,6 +266,60 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@CODVENDAPLANO", codVendaPlano);
 
             return rodarSelectVendaPlano();
+        }
+
+        public string excluirVendaPlano(string codVendaPlano)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "DELETE FROM TVENDAPLANO WHERE CODVENDAPLANO = @CODVENDAPLANO";
+
+            comando.Parameters.AddWithValue("@CODVENDAPLANO", codVendaPlano);
+
+            return rodarDelete();
+        }
+
+        public Venda encontrarVenda(string codVenda)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT * FROM TVENDA WHERE CODVENDA = @CODVENDA";
+
+            comando.Parameters.AddWithValue("@CODVENDA", codVenda);
+
+            return rodarSelectVenda();
+        }
+
+        public DataTable encontrarTodosVendaPlano(string codVenda)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT * FROM TVENDAPLANO WHERE CODVENDA = @CODVENDA";
+
+            comando.Parameters.AddWithValue("@CODVENDA", codVenda);
+            
+            return rodarSelectTodosVendaPlano();
+        }
+
+        public string alterarVenda(string codVenda, string qtddPlanos, string valorTotal)
+        {
+            comando.CommandText = "UPDATE TVENDA SET QTDDPLANOS = @QTDDPLANOS, VALORTOTAL = @VALORTOTAL WHERE CODVENDA = @CODVENDA";
+
+            comando.Parameters.AddWithValue("@CODVENDA", codVenda);
+            comando.Parameters.AddWithValue("@QTDDPLANOS", qtddPlanos);
+            comando.Parameters.AddWithValue("@VALORTOTAL", valorTotal);
+
+            return rodarUpdate();
+        }
+        public string excluirVendaVazia(string codVenda)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT * FROM TVENDA WHERE CODVENDA = @CODVENDA";
+
+            comando.Parameters.AddWithValue("@CODVENDA", codVenda);
+
+            return rodarDelete();
         }
     }
 }
