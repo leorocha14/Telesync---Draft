@@ -11,5 +11,7 @@ namespace Telesync.models
         public string codFormaPag { get; private set; }
         public string FormaPagamento { get; private set; }
 
+        public string status { get; private set; }
+
     }
 }
