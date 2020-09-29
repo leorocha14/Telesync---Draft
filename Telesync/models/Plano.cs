@@ -12,9 +12,11 @@ namespace Telesync.models
         public string nomePlano { get; private set; }
         public string tipo { get; set; }
         public string valor { get; private set; }
-        public Plano(string codPlano)
+        public Plano(string codPlano, string nomePlano, string valor)
         {
             this.codPlano = codPlano;
+            this.nomePlano = nomePlano;
+            this.valor = valor;
         }
     }
 }

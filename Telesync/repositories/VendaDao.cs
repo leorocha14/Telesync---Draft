@@ -174,6 +174,52 @@ namespace Telesync.repositories
             }
         }
 
+        private Plano rodarSelectPlano()
+        {
+            try
+
+            {
+                comando.Connection = _conexao.conectar();
+
+                var dr = comando.ExecuteReader();
+
+                dr.Read();
+
+                var codPlano = Convert.ToString(dr["codPlano"]);
+                var NomePlano = Convert.ToString(dr["nomePlano"]);
+                var ValorPlano = Convert.ToString(dr["valor"]);
+
+                Plano plano = new Plano(codPlano, NomePlano, ValorPlano);
+
+                dr.Close();
+                _conexao.desconectar();
+
+                return plano;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public bool campoVazio(Control controle, string campo, ErrorProvider erro)
+        {
+            erro.Clear();
+            if (string.IsNullOrEmpty(controle.Text))
+            {
+                erro.SetError(controle, "Obrigatório!");
+                MessageBox.Show("O " + campo + " é obrigatório!");
+                controle.Focus();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public string inserirVenda(Venda venda)
         {
             comando.Parameters.Clear();
@@ -208,17 +254,6 @@ namespace Telesync.repositories
 
             return rodarInsert() ? OPERACAO_SUCESSO : OPERACAO_ERRO;
         }
-        public string verificarValorPlano(Plano plano)
-        {
-            comando.Parameters.Clear();
-
-            comando.CommandText = "SELECT VALOR FROM TPLANO WHERE CODPLANO = @CODPLANO";
-
-            comando.Parameters.AddWithValue("@CODPLANO", plano.codPlano);
-
-            return rodarSelect("valor");
-
-        }
         public string verificarCodPlano(string nomePlano)
         {           
             comando.Parameters.Clear();
@@ -229,6 +264,17 @@ namespace Telesync.repositories
 
             return rodarSelect("codPlano");
         }
+
+        public Plano encontrarPlano(string codPlano)
+        {
+            comando.CommandText = "SELECT * FROM TPLANO WHERE CODPLANO = @CODPLANO";
+
+            comando.Parameters.AddWithValue("@CODPLANO", codPlano);
+
+            return rodarSelectPlano();
+
+        }
+
         public string verificarFormaPag(string formaPagamento)
         {
 
@@ -303,6 +349,8 @@ namespace Telesync.repositories
 
         public string alterarVenda(string codVenda, string qtddPlanos, string valorTotal)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "UPDATE TVENDA SET QTDDPLANOS = @QTDDPLANOS, VALORTOTAL = @VALORTOTAL WHERE CODVENDA = @CODVENDA";
 
             comando.Parameters.AddWithValue("@CODVENDA", codVenda);
