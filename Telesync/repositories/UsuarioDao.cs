@@ -55,9 +55,9 @@ namespace Telesync.repositories
         {
             comando.Parameters.Clear();
 
-            comando.CommandText = "SELECT * FROM TCliente WHERE CPF = (SELECT CPF_USUARIO FROM TLogin WHERE login = @LOGIN)"; 
+            comando.CommandText = "SELECT * FROM TCliente WHERE CODLOGIN = (SELECT CODLOGIN FROM TLogin WHERE CODLOGIN = @CODLOGIN)"; 
 
-            comando.Parameters.AddWithValue("@LOGIN", login.usuarioId);
+            comando.Parameters.AddWithValue("@CODLOGIN", login.usuarioId);
 
             return rodarSelect();
         }
@@ -139,10 +139,10 @@ namespace Telesync.repositories
 
                 var cpf = Convert.ToString(dr["cpf"]);
                 var nome = Convert.ToString(dr["nome"]);
-                var nomeMae = Convert.ToString(dr["nome_mae"]);
+                var nomeMae = Convert.ToString(dr["nomeMae"]);
                 var sexo = Convert.ToString(dr["sexo"]);
                 var email = Convert.ToString(dr["email"]);
-                var dtNasc = Convert.ToDateTime(dr["dt_nasc"]);
+                var dtNasc = Convert.ToDateTime(dr["dtNasc"]);
                 var bairro = Convert.ToString(dr["bairro"]);
                 var cep = Convert.ToString(dr["cep"]);
                 var logradouro = Convert.ToString(dr["logradouro"]);

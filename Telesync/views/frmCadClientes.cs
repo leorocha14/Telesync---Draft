@@ -17,46 +17,55 @@ namespace Telesync
             InitializeComponent();
         }
 
-        public frmCadClientes(Login login)
+        public frmCadClientes(Login login, bool ehAlteracao)
         {
             InitializeComponent();
+            this.ehAlteracao = ehAlteracao;
             preencherFormulario(login);
         }
 
         private void preencherFormulario(Login login)
         {
-            ehAlteracao = true;
+            Usuario usuario = null;
             try
             {
-                var usuario = usuarioDao.encontrarUsuario(login);
-                txtCPF.Text = usuario.cpf;
-                txtNome.Text = usuario.nome;
-                txtNomemae.Text = usuario.nomeMae;
-                txtSexo.Text = usuario.sexo;
-                txtEmail.Text = usuario.email;
-                txtDtNasc.Text = usuario.dtNasc;
-                txtBairro.Text = usuario.bairro;
-                txtLogradouro.Text = usuario.logradouro;
-                txtNumero.Text = usuario.numero;
-                txtCidade.Text = usuario.cidade;
-                txtUF.Text = usuario.uf;
-                txtComplemento.Text = usuario.complemento;
-                txtCEP.Text = usuario.cep;
-                txtUsuarioId.Text = login.usuarioId;
-                txtSenha.Text = login.senha;
-
-                txtCPF.Enabled = false;
-                txtDtNasc.Enabled = false;
-                txtNomemae.Enabled = false;
-                txtUsuarioId.Enabled = false;
-                txtSenha.Enabled = false;
+                usuario = usuarioDao.encontrarUsuario(login);
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("Usuario não encontrado para " + login.usuarioId);
                 Application.Restart();
             }
+            txtCPF.Text = usuario.cpf;
+            txtNome.Text = usuario.nome;
+            txtNomemae.Text = usuario.nomeMae;
+            txtSexo.Text = usuario.sexo;
+            txtEmail.Text = usuario.email;
+            txtDtNasc.Text = usuario.dtNasc;
+            txtBairro.Text = usuario.bairro;
+            txtLogradouro.Text = usuario.logradouro;
+            txtNumero.Text = usuario.numero;
+            txtCidade.Text = usuario.cidade;
+            txtUF.Text = usuario.uf;
+            txtComplemento.Text = usuario.complemento;
+            txtCEP.Text = usuario.cep;
+            txtUsuarioId.Text = login.usuarioId;
+            txtSenha.Text = login.senha;
 
+            if (ehAlteracao)
+            {
+                btnExcluir.Enabled = false;
+                btn_cadastrar.Text = "Salvar";
+            }
+            else
+            {
+                btn_cadastrar.Enabled = false;
+            }
+            txtCPF.Enabled = false;
+            txtDtNasc.Enabled = false;
+            txtNomemae.Enabled = false;
+            txtUsuarioId.Enabled = false;
+            txtSenha.Enabled = false;       
         }
 
         private void btn_cadastrar_Click(object sender, EventArgs e)

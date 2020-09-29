@@ -21,10 +21,27 @@ namespace Telesync.views
             InitializeComponent();
         }
 
-        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void acessarPerfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var cadCliente = new frmCadClientes(login);
-            cadCliente.Show();
+
+        }
+
+        private void verPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alterarCadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var cadastroCliente = new frmCadClientes(login, true); // true - eh uma alteracao
+            cadastroCliente.Show();
+        }
+
+        private void canceleSeuPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var cadastroCliente = new frmCadClientes(login, false); // false - eh uma exclusao
+            cadastroCliente.Show();
         }
     }
 }
