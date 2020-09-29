@@ -1,9 +1,31 @@
+DROP SCHEMA if EXISTS bd_telesync;
+
+CREATE SCHEMA bd_telesync;
+
+USE bd_telesync;
+
+CREATE TABLE `tpermissao` (
+	`codPermissao` INT NOT NULL,
+	`tipoPermissao` VARCHAR(30) NOT NULL DEFAULT '' COLLATE 'utf8mb4_0900_ai_ci',
+	PRIMARY KEY (`codPermissao`) USING BTREE
+) COLLATE='utf8mb4_0900_ai_ci' ENGINE=InnoDB;
+
+CREATE TABLE `tlogin` (
+	`codLogin` VARCHAR(45) NOT NULL,
+	`email` VARCHAR(40) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`senha` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+	`codPermissao` INT NOT NULL,
+	PRIMARY KEY (`codLogin`) USING BTREE,
+	CONSTRAINT `FK_COD_PERMISSAO` FOREIGN KEY (`codPermissao`) REFERENCES `tpermissao` (`codPermissao`)
+) COLLATE='utf8mb4_0900_ai_ci' ENGINE=InnoDB;
+
 CREATE TABLE `tcliente` (
   `CPF` int(11) NOT NULL,
   `nome` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `nomeMae` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `sexo` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `dtNasc` DATE NOT NULL,
   `bairro` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `cep` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `logradouro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -18,27 +40,18 @@ CREATE TABLE `tcliente` (
   CONSTRAINT `tcliente_ibfk_1` FOREIGN KEY (`codLogin`) REFERENCES `tlogin` (`codLogin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `tlogin` (
-	`login` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`senha` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-	`cpf_usuario` INT(11) NOT NULL DEFAULT '0',
-	PRIMARY KEY (`login`) USING BTREE,
-	INDEX `FK_CPF_USUARIO` (`cpf_usuario`) USING BTREE
-)
-COLLATE='utf8mb4_0900_ai_ci'
-ENGINE=InnoDB
-;
-
-CREATE TABLE `tvendaplano` (
-  `codVendaPlano` int(11) NOT NULL,
-  `codVenda` int(11) NOT NULL,
+CREATE TABLE `tplano` (
   `codPlano` int(11) NOT NULL,
-  `ddd` varchar(45) NOT NULL,
-  `numero` varchar(45) NOT NULL,
-  `numChip` varchar(45) NOT NULL,
-  PRIMARY KEY (`codVendaPlano`),
-  KEY `codVenda_idx` (`codVenda`),
-  KEY `codPlano_idx` (`codPlano`)
+  `nomePlano` varchar(45) NOT NULL,
+  `tipo` varchar(45) NOT NULL,
+  `valor` varchar(45) NOT NULL,
+  PRIMARY KEY (`codPlano`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `tformapagamento` (
+  `codFormaPag` int(11) NOT NULL,
+  `formaPagamento` varchar(45) NOT NULL,
+  PRIMARY KEY (`codFormaPag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `tvenda` (
@@ -57,18 +70,20 @@ CREATE TABLE `tvenda` (
   CONSTRAINT `tvenda_ibfk_1` FOREIGN KEY (`codFormaPag`) REFERENCES `tformapagamento` (`codFormaPag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE `tplano` (
+CREATE TABLE `tvendaplano` (
+  `codVendaPlano` int(11) NOT NULL,
+  `codVenda` int(11) NOT NULL,
   `codPlano` int(11) NOT NULL,
-  `nomePlano` varchar(45) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
-  `valor` varchar(45) NOT NULL,
-  PRIMARY KEY (`codPlano`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
-CREATE TABLE `tformapagamento` (
-  `codFormaPag` int(11) NOT NULL,
-  `formaPagamento` varchar(45) NOT NULL,
-  PRIMARY KEY (`codFormaPag`)
+  `ddd` varchar(45) NOT NULL,
+  `numero` varchar(45) NOT NULL,
+  `numChip` varchar(45) NOT NULL,
+  PRIMARY KEY (`codVendaPlano`),
+  KEY `codVenda_idx` (`codVenda`),
+  KEY `codPlano_idx` (`codPlano`),
+  CONSTRAINT `FK_COD_VENDA` FOREIGN KEY (`codVenda`) REFERENCES `tvenda` (`codVenda`),
+  CONSTRAINT `FK_COD_PLANO` FOREIGN KEY (`codPlano`) REFERENCES `tplano` (`codPlano`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `tpermissao` VALUES(0, 'Acesso básico');
+INSERT INTO `tpermissao` VALUES(1, 'Acesso a busca de clientes');
+INSERT INTO `tpermissao` VALUES(2, 'Acesso a relatórios');

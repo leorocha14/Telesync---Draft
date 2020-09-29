@@ -15,11 +15,11 @@ namespace Telesync.repositories
         private static Conexao _conexao = new Conexao();
         private static MySqlCommand comando = new MySqlCommand();
 
-        public bool validarUsuario(Login login)
+        public bool validarLogin(Login login)
         {
             comando.Parameters.Clear();
 
-            comando.CommandText = "SELECT 1 FROM tlogin WHERE login = @UsuarioId AND senha = @Senha";
+            comando.CommandText = "SELECT 1 FROM tlogin WHERE codLogin = @UsuarioId AND senha = @Senha";
             comando.Parameters.AddWithValue("@UsuarioId", login.usuarioId);
             comando.Parameters.AddWithValue("@Senha", login.senha);
 
@@ -37,5 +37,40 @@ namespace Telesync.repositories
                 return false;
             }
         }
+        public bool inserirLogin(Login login, int codPermissao)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "INSERT INTO TLogin (CODLOGIN, EMAIL, SENHA, CODPERMISSAO) VALUE (@CODLOGIN, @EMAIL, @SENHA, @CODPERMISSAO)";
+            comando.Parameters.AddWithValue("@CODLOGIN", login.usuarioId);
+            comando.Parameters.AddWithValue("@EMAIL", login.email);
+            comando.Parameters.AddWithValue("@SENHA", login.senha);
+            comando.Parameters.AddWithValue("@CODPERMISSAO", codPermissao);
+
+            return rodarInsert();
+        }
+
+        private bool rodarInsert()
+        {
+            return rodarDml();
+        }
+
+        private bool rodarDml()
+        {
+            try
+            {
+                comando.Connection = _conexao.conectar();
+                comando.ExecuteNonQuery();
+                _conexao.desconectar();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.ToString(), "MySQL exception");
+                return false;
+            }
+        }
     }
+
+    
 }
