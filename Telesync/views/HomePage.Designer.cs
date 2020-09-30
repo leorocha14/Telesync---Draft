@@ -35,25 +35,31 @@
             this.canceleSeuPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.canceleSeuPlanoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tables1 = new Telesync.resources.script.tables();
+            this.cadastrarPlanoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alterarPlanoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tables1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adquirirUmPlanoToolStripMenuItem,
             this.verPerfilToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1067, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // adquirirUmPlanoToolStripMenuItem
             // 
+            this.adquirirUmPlanoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarPlanoToolStripMenuItem,
+            this.alterarPlanoToolStripMenuItem});
             this.adquirirUmPlanoToolStripMenuItem.Name = "adquirirUmPlanoToolStripMenuItem";
-            this.adquirirUmPlanoToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.adquirirUmPlanoToolStripMenuItem.Size = new System.Drawing.Size(144, 24);
             this.adquirirUmPlanoToolStripMenuItem.Text = "Adquirir um plano";
             // 
             // verPerfilToolStripMenuItem
@@ -63,28 +69,28 @@
             this.canceleSeuPerfilToolStripMenuItem,
             this.canceleSeuPlanoToolStripMenuItem});
             this.verPerfilToolStripMenuItem.Name = "verPerfilToolStripMenuItem";
-            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.verPerfilToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
             this.verPerfilToolStripMenuItem.Text = "Ver perfil";
             this.verPerfilToolStripMenuItem.Click += new System.EventHandler(this.verPerfilToolStripMenuItem_Click);
             // 
             // acessarCadastroToolStripMenuItem
             // 
             this.acessarCadastroToolStripMenuItem.Name = "acessarCadastroToolStripMenuItem";
-            this.acessarCadastroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.acessarCadastroToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.acessarCadastroToolStripMenuItem.Text = "Alterar cadastro";
             this.acessarCadastroToolStripMenuItem.Click += new System.EventHandler(this.alterarCadastroToolStripMenuItem_Click);
             // 
             // canceleSeuPerfilToolStripMenuItem
             // 
             this.canceleSeuPerfilToolStripMenuItem.Name = "canceleSeuPerfilToolStripMenuItem";
-            this.canceleSeuPerfilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.canceleSeuPerfilToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.canceleSeuPerfilToolStripMenuItem.Text = "Cancele seu perfil";
             this.canceleSeuPerfilToolStripMenuItem.Click += new System.EventHandler(this.canceleSeuPerfilToolStripMenuItem_Click);
             // 
             // canceleSeuPlanoToolStripMenuItem
             // 
             this.canceleSeuPlanoToolStripMenuItem.Name = "canceleSeuPlanoToolStripMenuItem";
-            this.canceleSeuPlanoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.canceleSeuPlanoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.canceleSeuPlanoToolStripMenuItem.Text = "Cancele seu plano";
             // 
             // tables1
@@ -92,12 +98,27 @@
             this.tables1.DataSetName = "tables";
             this.tables1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // cadastrarPlanoToolStripMenuItem
+            // 
+            this.cadastrarPlanoToolStripMenuItem.Name = "cadastrarPlanoToolStripMenuItem";
+            this.cadastrarPlanoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cadastrarPlanoToolStripMenuItem.Text = "Cadastrar Plano";
+            this.cadastrarPlanoToolStripMenuItem.Click += new System.EventHandler(this.cadastrarPlanoToolStripMenuItem_Click);
+            // 
+            // alterarPlanoToolStripMenuItem
+            // 
+            this.alterarPlanoToolStripMenuItem.Name = "alterarPlanoToolStripMenuItem";
+            this.alterarPlanoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.alterarPlanoToolStripMenuItem.Text = "Alterar Plano";
+            this.alterarPlanoToolStripMenuItem.Click += new System.EventHandler(this.alterarPlanoToolStripMenuItem_Click);
+            // 
             // HomePage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.menuStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HomePage";
             this.Text = "HomePage";
             this.menuStrip1.ResumeLayout(false);
@@ -117,5 +138,7 @@
         private System.Windows.Forms.ToolStripMenuItem canceleSeuPerfilToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem canceleSeuPlanoToolStripMenuItem;
         private resources.script.tables tables1;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarPlanoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alterarPlanoToolStripMenuItem;
     }
 }

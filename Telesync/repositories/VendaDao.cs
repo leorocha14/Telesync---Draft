@@ -143,6 +143,38 @@ namespace Telesync.repositories
                 return null;
             }
         }
+
+        private DataTable rodarSelectTodasVendas()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                comando.Connection = _conexao.conectar();
+
+                dt.Columns.Add("codVenda", typeof(int));
+                dt.Columns.Add("cpfCliente", typeof(int));
+                dt.Columns.Add("codFormaPag", typeof(int));
+                dt.Columns.Add("codStatusPag", typeof(int));
+                dt.Columns.Add("dtVenda", typeof(string));
+                dt.Columns.Add("dtVencimento", typeof(string));
+                dt.Columns.Add("valorTotal", typeof(string));
+                dt.Columns.Add("obs", typeof(string));
+
+                MySqlDataAdapter dta = new MySqlDataAdapter(comando);
+
+                dta.Fill(dt);
+
+                _conexao.desconectar();
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
         private DataTable rodarSelectTodosVendaPlano()
         {
             DataTable dt = new DataTable();
@@ -267,6 +299,8 @@ namespace Telesync.repositories
 
         public Plano encontrarPlano(string codPlano)
         {
+            comando.Parameters.Clear();
+
             comando.CommandText = "SELECT * FROM TPLANO WHERE CODPLANO = @CODPLANO";
 
             comando.Parameters.AddWithValue("@CODPLANO", codPlano);
@@ -275,7 +309,7 @@ namespace Telesync.repositories
 
         }
 
-        public string verificarFormaPag(string formaPagamento)
+        public string verificarCodFormaPag(string formaPagamento)
         {
 
             comando.Parameters.Clear();
@@ -287,6 +321,17 @@ namespace Telesync.repositories
             return rodarSelect("codFormaPag");
         }
 
+        public string verificarFormaPag(string codFormaPag)
+        {
+
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT FORMAPAGAMENTO FROM TFORMAPAGAMENTO WHERE CODFORMAPAG = @CODFORMAPAG";
+
+            comando.Parameters.AddWithValue("@CODFORMAPAG", codFormaPag);
+
+            return rodarSelect("formaPagamento");
+        }
 
         public string alterarVendaPlano(VendaPlano vendaPlano)
         {
@@ -334,6 +379,18 @@ namespace Telesync.repositories
             comando.Parameters.AddWithValue("@CODVENDA", codVenda);
 
             return rodarSelectVenda();
+        }
+
+        public DataTable encontrarTodasVendas(Usuario usuario, Login login)
+        {
+            comando.Parameters.Clear();
+
+            comando.CommandText = "SELECT TV.* FROM TVENDA AS TV JOIN TCLIENTE AS TC JOIN TLOGIN AS TL ON TC.CODLOGIN = TL.CODLOGIN AND TV.CPFCLIENTE = TC.CPF WHERE TC.CODLOGIN = @CODLOGIN AND TC.CPF = @CPF";
+
+            comando.Parameters.AddWithValue("@CODLOGIN", login.usuarioId);
+            comando.Parameters.AddWithValue("@CPF", usuario.cpf);
+
+            return rodarSelectTodasVendas();
         }
 
         public DataTable encontrarTodosVendaPlano(string codVenda)

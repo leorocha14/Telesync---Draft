@@ -43,5 +43,17 @@ namespace Telesync.views
             var cadastroCliente = new frmCadClientes(login, false); // false - eh uma exclusao
             cadastroCliente.Show();
         }
+
+        private void cadastrarPlanoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var cadastroPlano = new frmCadPlano(login, false);
+            cadastroPlano.Show();
+        }
+
+        private void alterarPlanoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var alterarPlano = new frmCadPlano(login, true);
+            alterarPlano.Show();
+        }
     }
 }
