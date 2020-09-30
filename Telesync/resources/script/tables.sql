@@ -11,7 +11,7 @@ CREATE TABLE `tpermissao` (
 ) COLLATE='utf8mb4_0900_ai_ci' ENGINE=InnoDB;
 
 CREATE TABLE `tlogin` (
-	`codLogin` VARCHAR(45) NOT NULL,
+	`codLogin` VARCHAR(50) NOT NULL,
 	`email` VARCHAR(40) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`senha` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
 	`codPermissao` INT NOT NULL,
@@ -54,6 +54,12 @@ CREATE TABLE `tformapagamento` (
   PRIMARY KEY (`codFormaPag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `tstatuspag` (
+  `codStatusPag` int(11) NOT NULL,
+  `Status` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`codStatusPag`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 CREATE TABLE `tvenda` (
   `codVenda` int(11) NOT NULL,
   `cpfCliente` int(11) NOT NULL,
@@ -63,9 +69,12 @@ CREATE TABLE `tvenda` (
   `dtVencimento` varchar(45) NOT NULL,
   `valorTotal` varchar(45) NOT NULL,
   `obs` varchar(45) DEFAULT NULL,
+  `codStatusPag` int(11) NOT NULL,
   PRIMARY KEY (`codVenda`),
   KEY `cpfCliente_idx` (`cpfCliente`),
   KEY `codFormaPag_idx` (`codFormaPag`),
+  KEY `codStatusPag_idx` (`codStatusPag`),
+  CONSTRAINT `codVendaPlano` FOREIGN KEY (`codStatusPag`) REFERENCES `tstatuspag` (`codStatusPag`),
   CONSTRAINT `cpfCliente` FOREIGN KEY (`cpfCliente`) REFERENCES `tcliente` (`CPF`),
   CONSTRAINT `tvenda_ibfk_1` FOREIGN KEY (`codFormaPag`) REFERENCES `tformapagamento` (`codFormaPag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -87,3 +96,20 @@ CREATE TABLE `tvendaplano` (
 INSERT INTO `tpermissao` VALUES(0, 'Acesso básico');
 INSERT INTO `tpermissao` VALUES(1, 'Acesso a busca de clientes');
 INSERT INTO `tpermissao` VALUES(2, 'Acesso a relatórios');
+
+insert into tformapagamento values(1, "debito");
+insert into tformapagamento values(2, "boleto");
+
+insert into tplano values(1, "familia", "Internet", "300");
+insert into tplano values(2, "selfie", "Internet", "100");
+insert into tplano values(3, "controle", "Internet", "120");
+insert into tplano values(4, "casa", "Fixa","150");
+
+insert into tstatuspag values(1, "pago");
+insert into tstatuspag values(2, "pendente");
+insert into tstatuspag values(3, "suspenso");
+
+INSERT INTO `tlogin` VALUES ('1','noob@noobmail.com','123',0);
+
+INSERT INTO `tcliente` VALUES (123,'noob','mae','m','noob@noobmail.com','2020-12-12','são noob','123','avenida noobiudo',1234,'NB','nooblandia','noob','1');
+
