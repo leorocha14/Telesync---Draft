@@ -198,7 +198,6 @@ namespace Telesync.views
             btnAdicionar.Enabled = true;
             btnAlterar.Enabled = true;
             btnExcluir.Enabled = true;
-            btnFinalizar.Enabled = true;
             cbPlano.Enabled = true;
             txtDDD.ReadOnly = false;
         }
@@ -229,7 +228,6 @@ namespace Telesync.views
                 btnAdicionar.Enabled = true;
                 btnAlterar.Enabled = true;
                 btnExcluir.Enabled = true;
-                btnFinalizar.Enabled = true;
                 cbPlano.Enabled = true;
                 txtDDD.ReadOnly = false;
 
