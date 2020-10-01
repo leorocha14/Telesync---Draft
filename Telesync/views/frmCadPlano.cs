@@ -15,15 +15,56 @@ namespace Telesync.views
 {
     public partial class frmCadPlano : Form
     {
+        private bool ehAlteracao = false;
         int contL = 0;
-        int contC = 0;
         int qtddePlan = 0;
         double valorTotal = 0;
         private static VendaDao vendaDao = new VendaDao();
-        public frmCadPlano()
+        private static UsuarioDao usuarioDao = new UsuarioDao();
+
+        public frmCadPlano(Login login, bool ehAlteracao)
         {
             InitializeComponent();
+            this.ehAlteracao = ehAlteracao;
+
+            preencherFormVenda(login);
+
         }
+        private void preencherFormVenda(Login login)
+        {
+            dgvVendas.Columns.Add("CodVenda", "CodVenda");
+
+            Usuario usuario = null;
+            try
+            {
+                usuario = usuarioDao.encontrarUsuario(login);
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Usuario não encontrado para " + login.usuarioId);
+                Application.Restart();
+            }
+            if (ehAlteracao) {
+                var dt = vendaDao.encontrarTodasVendas(usuario, login);
+
+                dgvVendas.Rows.Add(dt.Rows.Count);
+
+                btnGerarVenda.Enabled = false;
+                gbAutoIncremento.Visible = true;
+                gbDadosPlano.Visible = true;
+                btnAdicionar.Visible = true;
+                btnAlterar.Visible = true;
+                btnExcluir.Visible = true;
+                dgvPlanos.Visible = true;
+                dgvVendas.Visible = true;
+
+                for(var i = 0; i < dt.Rows.Count; i++)
+                    dgvVendas.Rows[i].Cells[0].Value = dt.Rows[i]["codVenda"];
+            }
+
+            txtCPF.Text = usuario.cpf;
+        }
+
         public static string gerarNumero(int x, int y)
         {
             string num = "";
@@ -34,8 +75,6 @@ namespace Telesync.views
 
         private void frmCadPlano_Load(object sender, EventArgs e)
         {
-
-            dgvPlanos.Columns.Add("CodVenda", "CodVenda");
 
             dgvPlanos.Columns.Add("CodPlano", "CodPlano");
 
@@ -80,12 +119,13 @@ namespace Telesync.views
                 MessageBox.Show(resultado);
 
 
-                dgvPlanos.Rows[contL].Cells[contC].Value = txtCodVenda.Text;
-                dgvPlanos.Rows[contL].Cells[contC + 1].Value = txtCodPlano.Text;
-                dgvPlanos.Rows[contL].Cells[contC + 2].Value = txtCodVendaPlano.Text;
-                dgvPlanos.Rows[contL].Cells[contC + 3].Value = txtNumero.Text;
-                dgvPlanos.Rows[contL].Cells[contC + 4].Value = txtDDD.Text;
-                dgvPlanos.Rows[contL].Cells[contC + 5].Value = txtNumChip.Text;
+                dgvPlanos.Rows[contL].Cells[0].Value = txtCodVenda.Text;
+
+                dgvPlanos.Rows[contL].Cells[0].Value = txtCodPlano.Text;
+                dgvPlanos.Rows[contL].Cells[1].Value = txtCodVendaPlano.Text;
+                dgvPlanos.Rows[contL].Cells[2].Value = txtNumero.Text;
+                dgvPlanos.Rows[contL].Cells[3].Value = txtDDD.Text;
+                dgvPlanos.Rows[contL].Cells[4].Value = txtNumChip.Text;
                 contL += 1;
 
                 txtQttdPlanos.Text = qtddePlan.ToString();
@@ -96,12 +136,14 @@ namespace Telesync.views
 
                 vendaDao.alterarVenda(txtCodVenda.Text, txtQttdPlanos.Text, txtValorTotal.Text);
 
+            btnFinalizar.Visible = true;
+
         }
 
         private void dgvPlanos_CellContentClick(object sender, DataGridViewCellEventArgs e)
 
         {
-            if (dgvPlanos.CurrentCell.ColumnIndex == 2)
+            if (dgvPlanos.CurrentCell.ColumnIndex == 1)
             {
                 var vendaPlano = vendaDao.encontrarVendaPlano(dgvPlanos.CurrentCell.Value.ToString());
                 var plano = vendaDao.encontrarPlano(vendaPlano.codPlano);
@@ -127,24 +169,26 @@ namespace Telesync.views
 
         private void cbFormaPag_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtCodFormaPag.Text = vendaDao.verificarFormaPag(cbFormaPag.Text);
+            txtCodFormaPag.Text = vendaDao.verificarCodFormaPag(cbFormaPag.Text);
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            var vendaPlanoVerifica = vendaDao.encontrarVendaPlano(txtCodVendaPlano.Text);
-            var plano = vendaDao.encontrarPlano(vendaPlanoVerifica.codPlano);
-            var valorPlano = plano.valor;
+        {      
 
             var venda = vendaDao.encontrarVenda(txtCodVenda.Text);
-            if (venda.codStatusPag == "2") 
+            if (venda.codStatusPag == "2" && qtddePlan > 0) 
             {
+                var vendaPlanoVerifica = vendaDao.encontrarVendaPlano(txtCodVendaPlano.Text);
+                var plano = vendaDao.encontrarPlano(vendaPlanoVerifica.codPlano);
+                var valorPlano = plano.valor;
 
                 valorTotal = (Convert.ToDouble(txtValorTotal.Text) - Convert.ToDouble(valorPlano));
 
                 VendaPlano vendaPlano = new VendaPlano(txtCodPlano.Text, txtCodVendaPlano.Text, txtCodVenda.Text, txtDDD.Text, txtNumero.Text, txtNumChip.Text);
 
                 var resultado = vendaDao.alterarVendaPlano(vendaPlano);
+
+                dgvPlanos.Rows[dgvPlanos.CurrentRow.Index].Cells[0].Value = vendaPlano.codPlano;
 
                 txtValorTotal.Text = (valorTotal + Convert.ToDouble(txtValor.Text)).ToString();
 
@@ -155,51 +199,14 @@ namespace Telesync.views
             {
                 MessageBox.Show("Essa venda Já foi Paga, não é possivel alterar!");
             }
-            else
+            else if (venda.codStatusPag == "3")
             {
                 MessageBox.Show("Venda Suspensa, não é possivel alterar!");
             }
-        }
-
-        private void btnEncVenda_Click(object sender, EventArgs e)
-        {
-            if(vendaDao.campoVazio(txtCodVenda, "Código da Venda", errorProvider1))
+            else
             {
-                return;
-            }    
-
-            var venda = vendaDao.encontrarVenda(txtCodVenda.Text);
-
-            valorTotal = Convert.ToDouble(venda.valorTotal);
-            txtCPF.Text = venda.cpfCliente;
-            txtCodFormaPag.Text = venda.codFormaPagamento;
-            txtQttdPlanos.Text = venda.codFormaPagamento;
-            txtData.Text = venda.codFormaPagamento;
-            txtDtVencimento.Text = venda.codFormaPagamento;
-            txtValorTotal.Text = venda.valorTotal;
-            txtObs.Text = venda.codFormaPagamento;
-
-            var dt = vendaDao.encontrarTodosVendaPlano(txtCodVenda.Text);
-
-            for(var i = 0; i < dt.Rows.Count; i++)
-            {
-                dgvPlanos.Rows[i].Cells[0].Value = dt.Rows[i]["codVenda"];
-                dgvPlanos.Rows[i].Cells[1].Value = dt.Rows[i]["codPlano"];
-                dgvPlanos.Rows[i].Cells[2].Value = dt.Rows[i]["codVendaPlano"];
-                dgvPlanos.Rows[i].Cells[3].Value = dt.Rows[i]["numero"];
-                dgvPlanos.Rows[i].Cells[4].Value = dt.Rows[i]["ddd"];
-                dgvPlanos.Rows[i].Cells[5].Value = dt.Rows[i]["numChip"];
-                contL += 1;
+                MessageBox.Show("Não é possivel alterar, pois não há planos vinculado a essa venda");
             }
-            dt.Clear();
-
-            txtCodVenda.ReadOnly = true;
-            txtCPF.ReadOnly = true;
-            btnAdicionar.Enabled = true;
-            btnAlterar.Enabled = true;
-            btnExcluir.Enabled = true;
-            cbPlano.Enabled = true;
-            txtDDD.ReadOnly = false;
         }
 
         private void btnGerarVenda_Click(object sender, EventArgs e)
@@ -222,7 +229,7 @@ namespace Telesync.views
                 Venda venda = new Venda(txtCodVenda.Text, txtCPF.Text, txtCodFormaPag.Text, txtQttdPlanos.Text, txtData.Text, txtDtVencimento.Text, txtObs.Text, txtValorTotal.Text, "2");
 
                 var resultado = vendaDao.inserirVenda(venda);
-
+               
                 txtCodVenda.ReadOnly = true;
                 txtCPF.ReadOnly = true;
                 btnAdicionar.Enabled = true;
@@ -239,39 +246,48 @@ namespace Telesync.views
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             var qttdPlan = Convert.ToInt32(txtQttdPlanos.Text);
-            var valorTotal = Convert.ToInt32(txtValorTotal.Text);
             var resultado = vendaDao.excluirVendaPlano(txtCodVendaPlano.Text);
+            if(qttdPlan > 0)
+            {          
+                if (txtCodPlano.Text == "1")
+                {
+                    txtValorTotal.Text = (valorTotal - 300).ToString();
+                    valorTotal -= 300;
 
-            if (txtCodPlano.Text == "1")
-            {
-                txtValorTotal.Text = (valorTotal - 300).ToString();
+                }
+                else if (txtCodPlano.Text == "2")
+                {
+                    txtValorTotal.Text = (valorTotal - 100).ToString();
+                    valorTotal -= 100;
 
-            }
-            else if (txtCodPlano.Text == "2")
-            {
-                txtValorTotal.Text = (valorTotal - 100).ToString();
+                }
+                else if (txtCodPlano.Text == "3")
+                {
+                    txtValorTotal.Text = (valorTotal - 120).ToString();
+                    valorTotal -= 120;
 
-            }
-            else if (txtCodPlano.Text == "3")
-            {
-                txtValorTotal.Text = (valorTotal - 120).ToString();
+                }
+                else
+                {
+                    txtValorTotal.Text = (valorTotal - 150).ToString();
+                    valorTotal -= 150;
 
+                }
+
+                txtQttdPlanos.Text = (qttdPlan - 1).ToString();
+
+                dgvPlanos.Rows.RemoveAt(dgvPlanos.CurrentRow.Index);
+
+                contL -= 1;
+
+                vendaDao.alterarVenda(txtCodVenda.Text, txtQttdPlanos.Text, txtValorTotal.Text);
+
+                MessageBox.Show(resultado);
             }
             else
             {
-                txtValorTotal.Text = (valorTotal - 150).ToString();
-
+                MessageBox.Show("Não é possivel excluir devido a não haver planos");
             }
-
-            txtQttdPlanos.Text = (qttdPlan - 1).ToString();
-
-            dgvPlanos.Rows.RemoveAt(dgvPlanos.CurrentRow.Index);
-
-            contL -= 1;
-
-            vendaDao.alterarVenda(txtCodVenda.Text, txtQttdPlanos.Text, txtValorTotal.Text);
-
-            MessageBox.Show(resultado);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -296,6 +312,47 @@ namespace Telesync.views
             {
                 this.Dispose();
             }
+        }
+
+        private void dgvVendas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            var venda = vendaDao.encontrarVenda(dgvVendas.CurrentCell.Value.ToString());
+
+            valorTotal = Convert.ToDouble(venda.valorTotal);
+            txtCodVenda.Text = venda.codVenda;
+            txtCodFormaPag.Text = venda.codFormaPagamento;
+            cbFormaPag.Text = vendaDao.verificarFormaPag(venda.codFormaPagamento);
+            txtQttdPlanos.Text = venda.qtddPlanos;
+            txtData.Text = venda.dtVenda;
+            txtDtVencimento.Text = venda.dtVencimento;
+            txtValorTotal.Text = venda.valorTotal;
+            txtObs.Text = venda.obs;
+
+            var dt = vendaDao.encontrarTodosVendaPlano(dgvVendas.CurrentCell.Value.ToString());
+
+            for (var i = 0; i < dt.Rows.Count; i++)
+            {
+                dgvPlanos.Rows[i].Cells[0].Value = dt.Rows[i]["codPlano"];
+                dgvPlanos.Rows[i].Cells[1].Value = dt.Rows[i]["codVendaPlano"];
+                dgvPlanos.Rows[i].Cells[2].Value = dt.Rows[i]["numero"];
+                dgvPlanos.Rows[i].Cells[3].Value = dt.Rows[i]["ddd"];
+                dgvPlanos.Rows[i].Cells[4].Value = dt.Rows[i]["numChip"];
+                contL += 1;
+            }
+            dt.Clear();
+
+            btnAdicionar.Enabled = true;
+            btnAlterar.Enabled = true;
+            btnExcluir.Enabled = true;
+            cbPlano.Enabled = true;
+            txtDDD.ReadOnly = false;
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
